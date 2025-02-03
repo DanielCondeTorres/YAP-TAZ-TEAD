@@ -31,6 +31,38 @@
 <!-- Introduction --> 
 ## Introduction :movie_camera:
 
+### YAP/TAZ and Hippo Signaling Pathway
+
+#### Overview
+
+The YAP/TAZ-TEAD pathway is a key regulatory mechanism in cell growth, proliferation, and apoptosis. It plays a crucial role in organ development, tissue regeneration, and cancer progression.
+
+#### Hippo Pathway Regulation
+
+The Hippo signaling pathway controls the activity of YAP (Yes-associated protein) and TAZ (Transcriptional coactivator with PDZ-binding motif) by phosphorylating them through a kinase cascade:
+
+Active Hippo Pathway: MST1/2 kinases activate LATS1/2 kinases, which phosphorylate YAP/TAZ, leading to their cytoplasmic retention or degradation.
+
+Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate into the nucleus, bind to TEAD transcription factors, and activate genes that promote cell proliferation and survival.
+
+#### Key Functions
+
+- Development & Regeneration: YAP/TAZ drive cell proliferation and organ growth.
+
+- Cancer: Hyperactivation of YAP/TAZ leads to uncontrolled cell division, metastasis, and therapy resistance.
+
+- Fibrosis: Persistent YAP/TAZ activation contributes to excessive tissue scarring.
+
+#### Therapeutic Potential
+
+- YAP/TAZ-TEAD inhibitors are being explored for cancer treatment.
+
+- Hippo pathway modulators could aid in tissue repair and fibrosis management.
+
+- Targeting mechanical signals may help regulate YAP/TAZ activity in disease contexts.
+
+
+### Goal
 <p align="justify"> 
 The goal of this repository is to conduct molecular simulations to study a protein-protein complex implicated in cancer and to identify potential drugs to disrupt its formation. 
 </p>
