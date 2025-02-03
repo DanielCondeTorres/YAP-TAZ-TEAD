@@ -127,27 +127,24 @@ These previous files are stored in the folder output.
 <!-- WIKI -->
 ## Wiki 📖
 
-Additional information about this modifications can be found in our [Wiki](https://github.com/TeamMduse/Quantum-Computing-in-Peptide-Folding-Targeting-Cellular-Membranes/wiki) **(...Work in progress...)**.
+Additional information about this modifications can be found in our [Wiki](https://github.com/DanielCondeTorres/YAP-TAZ-TEAD/wiki) **(...Work in progress...)**.
 
 
 <!-- DISTRIBUTION OF TASKS -->
 ## Distribution of tasks ✒️ 
 Project coordinator: Ándres Gómez, Ángel Piñeiro and Rebeca García-Fandino
 
-- Main program (Python program): Daniel Conde-Torres, Mariamo Mussa-Juane, Daniel Faílde, Ángel Piñeiro, Ándres Gómez, Ángel Piñeiro and Rebeca García-Fandino
-- GitHub Designer: Daniel Conde-Torres, Mariamo Mussa-Juane and Daniel Faílde
+- Main program (Python program): Daniel Conde-Torres,Alejandro Seco, Hugo A. L. Filipe,  Ángel Piñeiro and Rebeca García-Fandino
+- GitHub Designer: Daniel Conde-Torres
 
 
 <!-- FAQs -->
 ## FAQs :interrobang:
 
 
-### If I don't have a quantum computer, can I use it?
-Yes, it is designed to run on quantum computer emulators.
 
-### What sequence size should I use on a conventional computer? 
-In a reasonable time, results can be obtained with sequences of 8 amino acids (104.63396787643 s). However, with a sequence of 10 amino acids you would need 102.3 h!
-
+### What ...? 
+Answer
 
 <!-- CONTRIBUTING -->
 ## Contributing 🖇️
