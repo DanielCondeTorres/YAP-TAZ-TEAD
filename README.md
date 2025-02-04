@@ -121,12 +121,16 @@ git clone https://github.com/qiskit-research/qiskit-research.git
 ```
 - Forcefield: **charmm 36**
 - Docking software: **  **
-  
+- Input files:
+    * YAP–TEAD1 complex (PDB: [3KYS](https://www.rcsb.org/structure/3KYS))
+    * mYAP-TEAD4 (PDB: [3JUA](https://www.rcsb.org/structure/3JUA))
+    * Vgll1-TEAD4  (PDB [5Z2Q](https://www.rcsb.org/structure/5Z2Q))
+    * TAZ-TEAD complex (PDB [5GN0](https://www.rcsb.org/structure/5GN0))
 <!-- Usage -->
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:
 ```
-make run  # To perform the search for the most stable state of your amino acid sequence.
+make execute pdb_complex=../Input_files/COMPLEXS/file.pdb 
 ```
 ### In the main.py file, in the inputs section we can choose:
 o	File preparation for protein-ligand simulations.

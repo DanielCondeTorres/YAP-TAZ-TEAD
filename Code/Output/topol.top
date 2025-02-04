@@ -1,0 +1,68 @@
+;
+;	File '../Output/.top' was generated
+;	By user: root (501)
+;	On host: MacBook-Pro-de-Daniel.local
+;	At date: Tue Feb  4 15:59:11 2025
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                :-) GROMACS - gmx pdb2gmx, 2024.4-Homebrew (-:
+;	
+;	Executable:   /opt/homebrew/bin/../Cellar/gromacs/2024.4/bin/gmx
+;	Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2024.4
+;	Working dir:  /Users/danielcondetorres/Desktop/GUARDA_PROYECTO/YAP-TAZ-TEAD/Code/Working_Area
+;	Command line:
+;	  gmx pdb2gmx -f ../Input_files/COMPLEXS/3jua.pdb -o ../Output/complex.gro -ignh -p ../Output/ -i ../Output/
+;	Force field was read from current directory or a relative path - path added.
+;
+
+; Include forcefield parameters
+#include "../Input_files/FORCEFIELDS/charmm36-mar2019.ff/forcefield.itp"
+
+; Include chain topologies
+#include "_Protein_chain_A.itp"
+#include "_Protein_chain_B.itp"
+#include "_Protein_chain_C.itp"
+#include "_Protein_chain_D.itp"
+#include "_Protein_chain_E.itp"
+#include "_Protein_chain_F.itp"
+#include "_Protein_chain_G.itp"
+#include "_Protein_chain_H.itp"
+
+; Include water topology
+#include "../Input_files/FORCEFIELDS/charmm36-mar2019.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "../Input_files/FORCEFIELDS/charmm36-mar2019.ff/ions.itp"
+
+[ system ]
+; Name
+TRANSCRIPTIONAL ENHANCER FACTOR TEF-3; 6 ETFR-2, TEF-1-RELATED FACTOR 1, TEF-1-RELATED FACTOR FR-19, RTEF-1;  ; 65 KDA YES-ASSOCIATED PROTEIN in water
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1
+Protein_chain_B     1
+Protein_chain_C     1
+Protein_chain_D     1
+Protein_chain_E     1
+Protein_chain_F     1
+Protein_chain_G     1
+Protein_chain_H     1
+SOL                41
+SOL                 7
+SOL                45
+SOL                 6
+SOL                51
+SOL                 7
+SOL                42
+SOL         116966
+NA               7
