@@ -1,4 +1,4 @@
-PYTHON = python3
+PYTHON = python3 #archive
 SCRIPT = main.py
 
 # Regla por defecto
