@@ -2,6 +2,9 @@
 
 # Transform .pdb from Protein Data Bank to .itp GROMACS format
 
+COMPLEX_PDB_FILE="$1"  # Recibe el argumento del Makefile
+
+gmx pdb2gmx -f  $COMPLEX_PDB_FILE -o complex.gro -water spce
 
 
 
