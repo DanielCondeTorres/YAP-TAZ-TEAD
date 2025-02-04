@@ -40,4 +40,4 @@ help:
 clean:
 	# No es necesario en este caso, pero se podría agregar para otros archivos
 	rm ../Output/* 
-	rm *mdp *pdb
+	rm *mdp *pdb ../Output/.itp
