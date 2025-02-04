@@ -126,6 +126,7 @@ git clone https://github.com/qiskit-research/qiskit-research.git
     * mYAP-TEAD4 (PDB: [3JUA](https://www.rcsb.org/structure/3JUA))
     * Vgll1-TEAD4  (PDB [5Z2Q](https://www.rcsb.org/structure/5Z2Q))
     * TAZ-TEAD complex (PDB [5GN0](https://www.rcsb.org/structure/5GN0))
+- Ligands topology can be obtained from: [CGenFF](https://cgenff.com)
 <!-- Usage -->
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:
@@ -197,7 +198,14 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 
+# References
+[Kaan, Hung Yi Kristal, et al. "Crystal structure of TAZ-TEAD complex reveals a distinct interaction mode from that of YAP-TEAD complex." Scientific reports 7.1 (2017): 2035.](https://www.nature.com/articles/s41598-017-02219-9)
 
+[Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)
+
+[Crawford, James J., Sarah M. Bronner, and Jason R. Zbieg. "Hippo pathway inhibition by blocking the YAP/TAZ–TEAD interface: a patent review." Expert opinion on therapeutic patents 28.12 (2018): 867-873.](https://www.tandfonline.com/doi/full/10.1080/13543776.2018.1549226?casa_token=IfUAL-qtOCcAAAAA%3Aej1TIFMo8DoScoSl_N3p-RrKfbfgXQawOoM8bVANtZoGxc7gUyqCEdwMrz8Mtz7wST7-wP13Q_bRc9g)
+
+[Pearson, Joel D., et al. "Binary pan-cancer classes with distinct vulnerabilities defined by pro-or anti-cancer YAP/TEAD activity." Cancer Cell 39.8 (2021): 1115-1134.](https://www.cell.com/cancer-cell/fulltext/S1535-6108(21)00338-X)
 
 ## References to start with MD simulations
 
