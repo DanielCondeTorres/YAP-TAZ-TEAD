@@ -1,4 +1,4 @@
-# YAP-TAZ-TEAD
+# YAP/TAZ-TEAD
 
 
 ## Expected outcomes
@@ -17,6 +17,7 @@
     <li><a href="#general-pre-requirements-computer">Pre-requirements</a></li>
     <li><a href="#required-files-">Required-files</a></li>
     <li><a href="#usage-%EF%B8%8F">Usage</a></li>
+    <li><a href="#input-files-">Input-files</a></li>
     <li><a href="#output-files-">Output-files</a></li>
     <li><a href="#wiki-">Wiki</a></li>
     <li><a href="#distribution-of-tasks-%EF%B8%8F">Distribution of tasks</a></li>
@@ -67,6 +68,11 @@ Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate 
 The goal of this repository is to conduct molecular simulations to study a protein-protein complex implicated in cancer and to identify potential drugs to disrupt its formation. 
 </p>
 
+#### About this repository
+<p align="justify"> 
+Escribiendo...
+</p>
+
 <!-- Pre-requirements -->
 ## General Pre-requirements :computer:
 
@@ -113,7 +119,7 @@ Clone this repository. For example,
 git clone https://github.com/qiskit-research/qiskit-research.git
 
 ```
-- Forcefield: **protein_folding**
+- Forcefield: **charmm 36**
 - Docking software: **  **
   
 <!-- Usage -->
@@ -204,13 +210,11 @@ Please make sure to update tests as appropriate.
 
 To **Cesga**, for allowing us the use of their facilities to hold this seminar.
 
-This work has received financial support from the Spanish Agencia Estatal de Investigación (AEI) and the European Regional Development Fund - ERDF (RTI2018-098795-A-I00, PID2019-111327GB-I00, PDC2022-133402-I00 and RYC-2016-20335), by the (FPU22/00636)-
-
-I would also like to thank Martín Calvelo, for having taught me with so much patience how to perform my first Molecular Dynamics simulations.
+This work has received financial support from the Spanish Agencia Estatal de Investigación (AEI) and the European Regional Development Fund - ERDF (RTI2018-098795-A-I00, PID2019-111327GB-I00, PDC2022-133402-I00 and RYC-2016-20335), by the (FPU22/00636) and the RePo-SUDOE project.
 
 ## Team
 
-Daniel Conde-Torres, Alejandro Seco, Hugo A. L. Filipe, Ángel Piñeiro y Rebeca García Fandiño 
+Daniel Conde-Torres, Alejandro Seco, Carlos Lozano, Antonio ,Hugo A. L. Filipe, Ángel Piñeiro y Rebeca García Fandiño 
 
 
 ## Contact
