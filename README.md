@@ -113,7 +113,9 @@ Clone this repository. For example,
 git clone https://github.com/qiskit-research/qiskit-research.git
 
 ```
-Then you can change the IBM **protein_folding** directory, for the one here!
+- Forcefield: **protein_folding**
+- Docking software: **  **
+  
 <!-- Usage -->
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:
