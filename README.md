@@ -90,7 +90,7 @@ The program is written in Python language so Python version 3 or higher is requi
 - [Collections](https://docs.python.org/3/library/collections.html)
 - [Glob](https://docs.python.org/3/library/glob.html)
 - [Fileinput](https://docs.python.org/es/3/library/fileinput.html)
-- [Gromacas](https://gromacs.bioexcel.eu)
+- [Gromacs](https://gromacs.bioexcel.eu)
 
 To be able to use these libraries, it is recommended to work with anaconda environment.
 
@@ -131,9 +131,12 @@ git clone https://github.com/qiskit-research/qiskit-research.git
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:
 ```
-make execute pdb_complex=../Input_files/COMPLEXS/file.pdb 
+make execute pdb_complex_1=../Input_files/COMPLEXS/file.pdb 
 ```
-
+For two units
+```
+ make execute_complex_simultation pdb_complex_1=file.pdb pdb_complex_2=file_2.pdb
+```
 This files can be filtered to select specific chains:
 
 ```
