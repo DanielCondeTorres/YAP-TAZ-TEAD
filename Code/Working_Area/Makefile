@@ -7,21 +7,13 @@ all: execute
 # Rule to execute the script with required input files
 # make execute_complex_simultation pdb_complex=complex.pdb
 execute_complex_simultation:
-	@order=1; \
-	echo "Passing order: $$order to the script"; \
-
-	if [ -z "$(pdb_complex)" ]; then \
-		echo "Error: Missing required input: pdb_complex"; \
-		echo "Usage: make execute pdb_complex=file.pdb [forcefield=forcefield] [ligand=file.mol2] [config=config.txt]"; \
+	@if [ -z "$(pdb_complex_1)" ]; then \
+		echo "Error: Missing required input: pdb_complex_1"; \
+		echo "Usage: make execute_complex_simultation pdb_complex_1=file1.pdb pdb_complex_2=file2.pdb"; \
 		exit 1; \
 	fi
-	# Execute the script with optional forcefield, ligand, and config inputs
-	echo "Passing order: $$order to the script"
-	bash $(SCRIPT) $(pdb_complex) $$order
-
-
-execute_complex_formation:
-
+	# Ejecutar el script pasando los parámetros
+	bash $(SCRIPT) $(pdb_complex_1) $(pdb_complex_2)
 
 
 # make cif_to_pdb cif_file=file.cif output_file=file.pdb
