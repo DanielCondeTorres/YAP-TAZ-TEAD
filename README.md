@@ -133,6 +133,12 @@ In order to run this program, the following command has to be used in the **Work
 ```
 make execute pdb_complex=../Input_files/COMPLEXS/file.pdb 
 ```
+
+This files can be filtered to select specific chains:
+
+```
+python obtain_specific_chains.py -pdb file.pdb -c A B -o ../Output/filtered.pdb
+```
 ### In the main.py file, in the inputs section we can choose:
 o	File preparation for protein-ligand simulations.
 
@@ -142,8 +148,41 @@ o	File preparation for protein-ligand simulations.
     * main_chain: string            # amino acid sequence
     * ws_phase_1: float             # average interaction of an amino acid with solvent in phase 1
 
+### Protein complex formation:
+- Obtain .pdb files of each unit of the complex. 
 
 
+
+#### Example
+From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.uniprot.org/uniprotkb/Q15562/entry), from [PDB](https://www.rcsb.org) or from [310.ai](https://310.ai/copilot/login)
+-  .pdb from [YAP](): 
+    ```txt
+    ETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
+
+-  .pdb from [TAZ](): 
+    ```txt
+    PLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD 
+
+
+- .pdb from [TEAD]():
+```txt
+MEPSSWSGSESPAENMERMSDSADKPIDNDAEGVWSPDIEQSFQEALAIYPPCGRRKIIL
+SDEGKMYGRNELIARYIKLRTGKTRTRKQVSSHIQVLARRKSRDFHSKLKDQTAKDKALQ
+HMAAMSSAQIVSATAIHNKLGLPGIPRPTFPGAPGFWPGMIQTGQPGSSQDVKPFVQQAY
+PIQPAVTAPIPGFEPASAPAPSVPAWQGRSIGTTKLRLVEFSAFLEQQRDPDSADLNCNI
+QDDAGAFYGVTSQYESSENMTVTCSTKVCSFGKQVVEKVETEYARFENGRFVYRINRSPM
+CEYMINFIHKLKHLPEKYMMNSVLENFTILLVVTNRDTQETLLCMACVFEVSNSEHGAQH
+HIYRLVKD
+ 
+ From AlphaFold a .cif file will be obtained, this can be easy converted to a .pdb file with:
+
+```
+make cif_to_pdb cif_file=input_file.cif  output_file=output_file.pdb
+```
+or 
+```
+ python cif_to_pdb_converter.py -cif input_file.cif -o output_file.pdb
+ ```
 
 > [!IMPORTANT]
 Allows us to modify different parameters related to the creation of the interface.

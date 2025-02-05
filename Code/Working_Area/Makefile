@@ -5,16 +5,35 @@ SCRIPT = main.sh
 all: execute
 
 # Rule to execute the script with required input files
-execute:
-	@if [ -z "$(pdb_complex)" ]; then \
+# make execute_complex_simultation pdb_complex=complex.pdb
+execute_complex_simultation:
+	@order=1; \
+	echo "Passing order: $$order to the script"; \
+
+	if [ -z "$(pdb_complex)" ]; then \
 		echo "Error: Missing required input: pdb_complex"; \
 		echo "Usage: make execute pdb_complex=file.pdb [forcefield=forcefield] [ligand=file.mol2] [config=config.txt]"; \
 		exit 1; \
 	fi
 	# Execute the script with optional forcefield, ligand, and config inputs
-	bash $(SCRIPT) $(forcefield) $(pdb_complex) $(ligand) $(config)
+	echo "Passing order: $$order to the script"
+	bash $(SCRIPT) $(pdb_complex) $$order
 
 
+execute_complex_formation:
+
+
+
+# make cif_to_pdb cif_file=file.cif output_file=file.pdb
+cif_to_pdb:
+# Check if both files are provided
+	@if [ ! -z "$(cif_file)" ] && [ ! -z "$(output_file)" ]; then \
+		python cif_to_pdb_converter.py -cif $(cif_file) -o $(output_file); \
+	else \
+		echo "Error: Missing required input: cif_file or output_file"; \
+		echo "Usage: make execute cif_file=file.cif output_file=output.pdb"; \
+		exit 1; \
+	fi
 # Help rule
 production:
 	sbatch production.sh

@@ -1,41 +1,49 @@
 #!/bin/bash
 
-# Transform .pdb from Protein Data Bank to .itp GROMACS format
 
-COMPLEX_PDB_FILE="$1"  # Recibe el argumento del Makefile
-FORCEFIELD_FILE="$2"  # Recibe el argumento del Makefile
+echo "All inputs received: $@"
+# Recibe los argumentos del Makefile
+COMPLEX_PDB_FILE="$1"  # Archivo PDB del complejo
+Order="$2"  # Orden de ejecución (1 para ejecutar, otro valor para no hacer nada)
+echo "Executing with order: $Order"
+# Verifica si Order es igual a 1
+if [ "$Order" -eq 1 ]; then
+    # Crear directorio de salida
+    mkdir -p ../Output/
 
-mkdir ../Output/
+    # Convertir PDB a GRO y generar topología
+    GMXLIB=../Input_files/FORCEFIELDS gmx pdb2gmx -f "$COMPLEX_PDB_FILE" -o ../Output/complex.gro -ignh -p ../Output/topol.top -i ../Output/posre.itp
 
-GMXLIB=../Input_files/FORCEFIELDS gmx pdb2gmx -f  $COMPLEX_PDB_FILE -o ../Output/complex.gro -ignh -p ../Output/ -i ../Output/ -merge all
-mv ../Output/.top ../Output/topol.top
-# Create water box
-gmx editconf -f ../Output/complex.gro -o ../Output/complex_water_box.gro -c -d 1.8 -bt cubic
-gmx solvate -cp ../Output/complex_water_box.gro -cs spc216.gro -o ../Output/complex_water_box.gro -p ../Output/topol.top
-rm ../Output/#* 
+    # Crear caja de agua
+    gmx editconf -f ../Output/complex.gro -o ../Output/complex_water_box.gro -c -d 1.2 -bt cubic
+    gmx solvate -cp ../Output/complex_water_box.gro -cs spc216.gro -o ../Output/complex_water_box.gro -p ../Output/topol.top
 
-# Add ions
-gmx grompp -f ../Input_files/MDP_FILES/ions.mdp -c ../Output/complex_water_box.gro -p ../Output/topol.top -o ../Output/ions.tpr -maxwarn 1
-gmx genion -s ../Output/ions.tpr -o ../Output/complex_solv_ions.gro -p  ../Output/topol.top -pname NA -nname CL -neutral << EOF
-SOL
-EOF
+    # Eliminar archivos temporales
+    rm -f ../Output/#*
 
-# Energy minimization 
-gmx grompp -f ../Input_files/MDP_FILES/min.mdp -c ../Output/complex_solv_ions.gro -p ../Output/topol.top -o ../Output/min.tpr -maxwarn 2 
-gmx mdrun -v -deffnm  ../Output/min -ntmpi 4
+    # Añadir iones
+    gmx grompp -f ../Input_files/MDP_FILES/ions.mdp -c ../Output/complex_water_box.gro -p ../Output/topol.top -o ../Output/ions.tpr -maxwarn 1
+    echo "SOL" | gmx genion -s ../Output/ions.tpr -o ../Output/complex_solv_ions.gro -p ../Output/topol.top -pname NA -nname CL -neutral
 
-#NVT equilibration
-gmx grompp -f ../Input_files/MDP_FILES/eq_nvt.mdp -c ../Output/min.gro -p ../Output/topol.top -o ../Output/eq.tpr -r ../Output/min.gro -maxwarn 2 
-gmx mdrun -v -deffnm  ../Output/eq -ntmpi 4
+    # Minimización de energía
+    gmx grompp -f ../Input_files/MDP_FILES/min.mdp -c ../Output/complex_solv_ions.gro -p ../Output/topol.top -o ../Output/min.tpr -maxwarn 2
+    gmx mdrun -v -deffnm ../Output/min -ntmpi 4
 
-# NPT equilibration
-gmx grompp -f ../Input_files/MDP_FILES/eq_npt.mdp -c ../Output/eq.gro -p ../Output/topol.top -o ../Output/eq_2.tpr -r ../Output/eq.gro -maxwarn 2 
-gmx mdrun -v -deffnm  ../Output/eq_2 -ntmpi 4
+    # Equilibración NVT
+    gmx grompp -f ../Input_files/MDP_FILES/eq_nvt.mdp -c ../Output/min.gro -p ../Output/topol.top -o ../Output/eq.tpr -r ../Output/min.gro -maxwarn 2
+    gmx mdrun -v -deffnm ../Output/eq -ntmpi 4
 
-rm *mdp *pdb
+    # Equilibración NPT
+    gmx grompp -f ../Input_files/MDP_FILES/eq_npt.mdp -c ../Output/eq.gro -p ../Output/topol.top -o ../Output/eq_2.tpr -r ../Output/eq.gro -maxwarn 2
+    gmx mdrun -v -deffnm ../Output/eq_2 -ntmpi 4
 
-# Create .tpr to production
-gmx grompp -f ../Input_files/MDP_FILES/prod.mdp -c ../Output/eq_2.gro -p ../Output/topol.top -o ../Output/prod.tpr -maxwarn 2
+    # Eliminar archivos temporales
+    rm -f ../Output/#* *mdp *pdb
 
-# Delete repeated files
-rm ../Output/#* 
+    # Crear archivo .tpr para producción
+    gmx grompp -f ../Input_files/MDP_FILES/prod.mdp -c ../Output/eq_2.gro -p ../Output/topol.top -o ../Output/prod.tpr -maxwarn 2
+
+    echo "Proceso completado exitosamente."
+else
+    echo "Order no es igual a 1. No se ejecutará el proceso."
+fi
