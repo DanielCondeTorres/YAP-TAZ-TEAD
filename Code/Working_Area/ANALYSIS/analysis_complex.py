@@ -107,48 +107,69 @@ def contact_map(u, cutoff: float = 12, frames_to_analyze: int = 1):
 
 
 def dssp_analysis(chain_id, trajectory_file, topology_file, residues_names):
+    """
+    Analyze the secondary structure of a protein chain over time using DSSP and visualize the dominant structure per residue.
+    
+    Parameters:
+    chain_id (int): The chain ID of the protein to analyze.
+    trajectory_file (str): Path to the trajectory file.
+    topology_file (str): Path to the topology file.
+    residues_names (list of str): List of residue names for labeling the x-axis.
+    
+    Returns:
+    None: Displays a bar plot of the most frequent secondary structure per residue.
+    """
+    # Load trajectory and select only protein atoms from the given chain
     traj = md.load(trajectory_file, top=topology_file)
-    protein_atoms_indices = traj.topology.select(f'chainid {chain_id}')  # Seleccionar solo los átomos de la proteína
+    protein_atoms_indices = traj.topology.select(f'chainid {chain_id}')
     traj_protein_slice = traj.atom_slice(protein_atoms_indices) 
+    
     # Compute secondary structure using DSSP
     dssp = md.compute_dssp(traj_protein_slice)
+    
     # Classify secondary structures
     helix_codes = {'H', 'G', 'I'}  # Helices
     beta_codes = {'E', 'B'}        # Beta sheets
     coil_codes = {'T', 'S', 'C'}   # Random coil
+    
     num_residues = dssp.shape[1]  # Number of residues
+    
     # Count frequencies of each structure per residue
     helix_freq = np.zeros(num_residues)
     beta_freq = np.zeros(num_residues)
     coil_freq = np.zeros(num_residues)
+    
     for i in range(num_residues):
         res_dssp = dssp[:, i]  # Secondary structure of residue i over time
         helix_freq[i] = np.sum(np.isin(res_dssp, list(helix_codes))) / len(res_dssp)
         beta_freq[i] = np.sum(np.isin(res_dssp, list(beta_codes))) / len(res_dssp)
         coil_freq[i] = np.sum(np.isin(res_dssp, list(coil_codes))) / len(res_dssp)
+    
     # Determine the most frequent conformation
     max_freq = np.maximum(np.maximum(helix_freq, beta_freq), coil_freq)
     colors = [
         'blue' if h == mf else 'orange' if b == mf else 'red'
         for h, b, mf in zip(helix_freq, beta_freq, max_freq)
     ]
+    
     # Plot
     plt.figure(figsize=(16, 8))
     plt.bar(range(num_residues), max_freq * 100, color=colors)
-    plt.xlabel('Residues',fontsize=20)
-    plt.ylabel('Percentage of dominant conformation',fontsize=20)
+    plt.xlabel('Residues', fontsize=20)
+    plt.ylabel('Percentage of dominant conformation', fontsize=20)
     plt.title('Most frequent secondary structure per residue')
-    plt.xticks(ticks=np.arange(0, len(residues_names), 3), labels=residues_names[::3], rotation=90, fontsize=10)  # Show every 5th label
+    plt.xticks(ticks=np.arange(0, len(residues_names), 3), labels=residues_names[::3], rotation=90, fontsize=10)
     plt.yticks(fontsize=10)
-    plt.gca().set_xticks(np.arange(len(residues_names)))  # Ensure every tick has a label
-
+    plt.gca().set_xticks(np.arange(len(residues_names)))
+    
     # Add legend
     legend_handles = [
         mpatches.Patch(color='blue', label='Helix'),
         mpatches.Patch(color='orange', label='Beta sheet'),
         mpatches.Patch(color='red', label='Random coil')
     ]
-    plt.legend(handles=legend_handles, loc='upper right',fontsize=18)
+    plt.legend(handles=legend_handles, loc='upper right', fontsize=18)
+    
     plt.show()
 
 

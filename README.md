@@ -19,6 +19,7 @@
     <li><a href="#usage-%EF%B8%8F">Usage</a></li>
     <li><a href="#input-files-">Input-files</a></li>
     <li><a href="#output-files-">Output-files</a></li>
+    <li><a href="#Analysis-">Analysis</a></li>
     <li><a href="#wiki-">Wiki</a></li>
     <li><a href="#distribution-of-tasks-%EF%B8%8F">Distribution of tasks</a></li>
     <li><a href="#faqs-interrobang">FAQs</a></li>
@@ -209,8 +210,13 @@ Therefore, in the first case the importance of the interface will be ``` cls._in
 > [!NOTE]  
 These previous files are stored in the folder output.
 
+<!-- Analysis -->
+## Analysis
+So far:
 
-
+```
+ python analysis_complex.py -pdb ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/out.pdb -xtc ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/out.xtc
+```
 
 <!-- WIKI -->
 ## Wiki 📖
