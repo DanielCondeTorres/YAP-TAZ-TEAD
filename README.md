@@ -71,7 +71,7 @@ The goal of this repository is to conduct molecular simulations to study a prote
 
 #### About this repository
 <p align="justify"> 
-Escribiendo...
+Given a .pdb file containing two units (or two separate .pdb files), the final .tpr file can be created to run a simulation. Additionally, various analyses can be performed afterward
 </p>
 
 <!-- Pre-requirements -->
@@ -80,6 +80,8 @@ Escribiendo...
 In order to run the program it is necessary to have the following requirements installed:
 
 The program is written in Python language so Python version 3 or higher is required. Also, for python programs to work properly the following libraries are needed:
+- [Python](https://www.python.org)
+- [Gromacs](https://gromacs.bioexcel.eu)
 - [Matplotlib](https://matplotlib.org)
 - [MDAnalysis](https://www.mdanalysis.org)
 - [Mdtraj](https://www.mdtraj.org/1.9.8.dev0/index.html)
@@ -88,7 +90,7 @@ The program is written in Python language so Python version 3 or higher is requi
 - [Os](https://docs.python.org/3/library/os.html)
 - [Glob](https://docs.python.org/3/library/glob.html)
 - [Fileinput](https://docs.python.org/es/3/library/fileinput.html)
-- [Gromacs](https://gromacs.bioexcel.eu)
+
 
 To be able to use these libraries, it is recommended to work with anaconda environment.
 
@@ -114,8 +116,7 @@ pip install module
 Clone this repository. For example,
 
 ```
-git clone https://github.com/qiskit-research/qiskit-research.git
-
+git clone https://github.com/DanielCondeTorres/YAP-TAZ-TEAD.git
 ```
 - Forcefield: **charmm 36**
 - Docking software: **  **
@@ -125,6 +126,10 @@ git clone https://github.com/qiskit-research/qiskit-research.git
     * Vgll1-TEAD4  (PDB [5Z2Q](https://www.rcsb.org/structure/5Z2Q))
     * TAZ-TEAD complex (PDB [5GN0](https://www.rcsb.org/structure/5GN0))
 - Ligands topology can be obtained from: [CGenFF](https://cgenff.com)
+
+Currently, some PDB files encounter issues when using pdb2gmx, so we perform simulations of the complex using the first two chains of [3JUA](https://www.rcsb.org/structure/3JUA). From this, we extract the TEAD .pdb structure. Meanwhile, the structures of YAP and TAZ are obtained from their amino acid sequences (as detailed in the next section) and predicted using [AlphaFold](https://alphafoldserver.com).
+
+
 <!-- Usage -->
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:

@@ -82,8 +82,8 @@ def hydrogen_bond_matrix(tpr, xtc):
 
     # (Optional) Normalize the matrix by the total number of frames to get the occupancy
     matrix /= 2 * (u.trajectory.n_frames + 1)
-    print(f"{u.trajectory.n_frames} FRAMES")
-    print('MATRIX: ', matrix)
+    #print(f"{u.trajectory.n_frames} FRAMES")
+    #print('MATRIX: ', matrix)
 
     # Get indices where the matrix is non-zero
     indices = np.nonzero(matrix)
