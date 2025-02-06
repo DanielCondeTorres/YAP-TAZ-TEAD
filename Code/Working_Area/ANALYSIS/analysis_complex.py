@@ -5,6 +5,7 @@ import MDAnalysis as mda
 from MDAnalysis.analysis.distances import distance_array
 from MDAnalysis.analysis.hydrogenbonds import HydrogenBondAnalysis
 import mdtraj as md
+import matplotlib.patches as mpatches
 
 def load_trajectory(pdb, xtc):
     """
@@ -93,6 +94,62 @@ def contact_map(u, cutoff: float = 12, frames_to_analyze: int = 1):
     plt.tight_layout()
     # Show the plot
     plt.show()
+    return residues1, residues2
+
+
+
+
+
+
+
+
+
+
+
+def dssp_analysis(chain_id, trajectory_file, topology_file, residues_names):
+    traj = md.load(trajectory_file, top=topology_file)
+    protein_atoms_indices = traj.topology.select(f'chainid {chain_id}')  # Seleccionar solo los átomos de la proteína
+    traj_protein_slice = traj.atom_slice(protein_atoms_indices) 
+    # Compute secondary structure using DSSP
+    dssp = md.compute_dssp(traj_protein_slice)
+    # Classify secondary structures
+    helix_codes = {'H', 'G', 'I'}  # Helices
+    beta_codes = {'E', 'B'}        # Beta sheets
+    coil_codes = {'T', 'S', 'C'}   # Random coil
+    num_residues = dssp.shape[1]  # Number of residues
+    # Count frequencies of each structure per residue
+    helix_freq = np.zeros(num_residues)
+    beta_freq = np.zeros(num_residues)
+    coil_freq = np.zeros(num_residues)
+    for i in range(num_residues):
+        res_dssp = dssp[:, i]  # Secondary structure of residue i over time
+        helix_freq[i] = np.sum(np.isin(res_dssp, list(helix_codes))) / len(res_dssp)
+        beta_freq[i] = np.sum(np.isin(res_dssp, list(beta_codes))) / len(res_dssp)
+        coil_freq[i] = np.sum(np.isin(res_dssp, list(coil_codes))) / len(res_dssp)
+    # Determine the most frequent conformation
+    max_freq = np.maximum(np.maximum(helix_freq, beta_freq), coil_freq)
+    colors = [
+        'blue' if h == mf else 'orange' if b == mf else 'red'
+        for h, b, mf in zip(helix_freq, beta_freq, max_freq)
+    ]
+    # Plot
+    plt.figure(figsize=(16, 8))
+    plt.bar(range(num_residues), max_freq * 100, color=colors)
+    plt.xlabel('Residues',fontsize=20)
+    plt.ylabel('Percentage of dominant conformation',fontsize=20)
+    plt.title('Most frequent secondary structure per residue')
+    plt.xticks(ticks=np.arange(0, len(residues_names), 3), labels=residues_names[::3], rotation=90, fontsize=10)  # Show every 5th label
+    plt.yticks(fontsize=10)
+    plt.gca().set_xticks(np.arange(len(residues_names)))  # Ensure every tick has a label
+
+    # Add legend
+    legend_handles = [
+        mpatches.Patch(color='blue', label='Helix'),
+        mpatches.Patch(color='orange', label='Beta sheet'),
+        mpatches.Patch(color='red', label='Random coil')
+    ]
+    plt.legend(handles=legend_handles, loc='upper right',fontsize=18)
+    plt.show()
 
 
 
@@ -111,5 +168,7 @@ if __name__ == "__main__":
     u = load_trajectory(args.pdb, args.xtc)
 
     # Perform analysis on the loaded trajectory
-    contact_map(u, cutoff=12, frames_to_analyze=10)
+    residues_1_names, residues_2_names = contact_map(u, cutoff=12, frames_to_analyze=10)
+    dssp_analysis(0, args.xtc, args.pdb,residues_1_names)
+    dssp_analysis(1, args.xtc, args.pdb,residues_2_names)
     # Calculate and visualize the average hydrogen bonds
