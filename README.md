@@ -19,7 +19,7 @@
     <li><a href="#usage-%EF%B8%8F">Usage</a></li>
     <li><a href="#input-files-">Input-files</a></li>
     <li><a href="#output-files-">Output-files</a></li>
-    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#analysis-">Analysis</a></li>
     <li><a href="#wiki-">Wiki</a></li>
     <li><a href="#distribution-of-tasks-%EF%B8%8F">Distribution of tasks</a></li>
     <li><a href="#faqs-interrobang">FAQs</a></li>
