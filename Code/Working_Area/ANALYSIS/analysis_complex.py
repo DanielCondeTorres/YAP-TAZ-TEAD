@@ -21,7 +21,7 @@ def load_trajectory(pdb, xtc):
     u = mda.Universe(pdb, xtc)
     return u
 
-def contact_map(u, cutoff: float = 12, frames_to_analyze: int = 1):
+def contact_map(u, cutoff: float = 5, frames_to_analyze: int = 1):
     """
     This function calculates and visualizes the contact map between two protein subunits 
     based on their Cα atoms from a trajectory.
@@ -189,7 +189,7 @@ if __name__ == "__main__":
     u = load_trajectory(args.pdb, args.xtc)
 
     # Perform analysis on the loaded trajectory
-    residues_1_names, residues_2_names = contact_map(u, cutoff=12, frames_to_analyze=10)
+    residues_1_names, residues_2_names = contact_map(u, cutoff=8, frames_to_analyze=10)
     dssp_analysis(0, args.xtc, args.pdb,residues_1_names)
     dssp_analysis(1, args.xtc, args.pdb,residues_2_names)
     # Calculate and visualize the average hydrogen bonds

@@ -298,3 +298,10 @@ alejandro.seco.gonzalez@usc.es
 ### LinkedIn
 
 [Daniel Conde-Torres](https://www.linkedin.com/in/daniel-conde-torres-4683b521a)
+
+
+# STEPS
+
+- Reconocer aminoacidos que forman las interacciones entre el complex que coincida con los articulos
+- Intentar alinar el TAZ para que cuadre bien al principio (fijarse en [5GN0](https://www.rcsb.org/structure/5GN0))
+- Probar steered molecular dynamics para alinear (poco prioritario)
