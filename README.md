@@ -81,14 +81,11 @@ In order to run the program it is necessary to have the following requirements i
 
 The program is written in Python language so Python version 3 or higher is required. Also, for python programs to work properly the following libraries are needed:
 - [Matplotlib](https://matplotlib.org)
+- [MDAnalysis](https://www.mdanalysis.org)
+- [Mdtraj](https://www.mdtraj.org/1.9.8.dev0/index.html)
 - [Numpy](https://numpy.org)
 - [Re](https://docs.python.org/3/library/re.html)
 - [Os](https://docs.python.org/3/library/os.html)
-- [Mayavi](http://docs.enthought.com/mayavi/mayavi/)
-- [Imageio](https://pypi.org/project/imageio/) 
-- [Sys](https://docs.python.org/3/library/sys.html)
-- [Time](https://docs.python.org/3/library/time.html)
-- [Collections](https://docs.python.org/3/library/collections.html)
 - [Glob](https://docs.python.org/3/library/glob.html)
 - [Fileinput](https://docs.python.org/es/3/library/fileinput.html)
 - [Gromacs](https://gromacs.bioexcel.eu)
@@ -213,10 +210,17 @@ These previous files are stored in the folder output.
 <!-- Analysis -->
 ## Analysis 📊
 
-So far:
+This section covers the analysis of the complex (go to Working_Area/ANALYSIS)
+So far with analysis complex performs the contact matrix between two subunits of the complex and the secondary structure per residue of each subunit:
+The inputs are a .pdb of your system and an associated trajectory in .xtc format
 
 ```
- python analysis_complex.py -pdb ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/out.pdb -xtc ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/out.xtc
+ python analysis_complex.py -pdb complex.pdb -xtc trajectory.xtc
+```
+Similarlly, but it needs a .tpr file (in some way the topology), the hydrogen bond matrix between the two subunits can be performed as follows:
+
+```
+python hydrogend_bond_matrix.py -tpr ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/prod.tpr -xtc ../../../../OUTPUT_CESGA/YAP_TEAD_COMPLEX/out2.xtc
 ```
 
 <!-- WIKI -->
