@@ -16,16 +16,18 @@ grep -v HOH "$COMPLEX_PDB_FILE_1" > ../Output/clean_1.pdb
 GMXLIB=../Input_files/FORCEFIELDS gmx pdb2gmx -f ../Output/clean_1.pdb -o ../Output/complex.gro -ignh -p ../Output/topol.top -i ../Output/posre.itp 
 
 # Crear caja de agua
-gmx editconf -f ../Output/complex.gro -o ../Output/complex.gro -c -d 2.8 -bt cubic
+gmx editconf -f ../Output/complex.gro -o ../Output/complex.gro -c -d 2 -bt cubic
 
 
 #Añadir segundo complejo
 if [ -n "$COMPLEX_PDB_FILE_2" ]; then
     echo "Processing second PDB file: $COMPLEX_PDB_FILE_2"
-    sed -n '/^\[ moleculetype \]/,/^; Include water topology/p' ../Output/topol.top | sed '/^; Include water topology/d' > ../Output/molecule.itp
+    sed -n '/^\[ moleculetype \]/,/^; Include water topology/p' ../Output/topol.top | sed '/^; Include water topology/d' > ../Output/molecule_1.itp
     grep -v HOH "$COMPLEX_PDB_FILE_2" > ../Output/clean_2.pdb
     GMXLIB=../Input_files/FORCEFIELDS gmx pdb2gmx -f ../Output/clean_2.pdb -o ../Output/complex_2.gro -ignh -p ../Output/topol_2.top -i ../Output/posre_2.itp
     sed -i '' 's/^Protein_chain_A/Protein_chain_B/' ../Output/topol_2.top
+    # En UBUNTU: 
+    sed -i 's/^Protein_chain_A/Protein_chain_B/' ../Output/topol_2.top
     sed -n '/^\[ moleculetype \]/,/^; Include water topology/p' ../Output/topol_2.top | sed '/^; Include water topology/d' > ../Output/molecule_2.itp
 
     cat << 'EOF' > ../Output/topol.top

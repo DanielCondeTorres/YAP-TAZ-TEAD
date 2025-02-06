@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: root (501)
 ;	On host: MacBook-Pro-de-Daniel.local
-;	At date: Wed Feb  5 16:48:30 2025
+;	At date: Wed Feb  5 17:52:16 2025
 ;
 ;	Created by:
 ;	                :-) GROMACS - gmx grompp, 2024.5-Homebrew (-:
@@ -175,7 +175,7 @@ annealing-temp           =
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no
 gen-temp                 = 300
-gen-seed                 = 1744568303
+gen-seed                 = 2145342387
 
 ; OPTIONS FOR BONDS    
 constraints              = h-bonds
