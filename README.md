@@ -77,8 +77,6 @@ Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate 
 From [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)
  #### Summary of Interface Amino Acids TAZ-TEAD
 
- # Summary of Interface Amino Acids
-
 |               | **TAZ**                             | **TEAD**                                      |
 |--------------|-----------------------------------|----------------------------------------------|
 | **Interface 1** | Leu28, Leu31, Phe32, Val35, Met36 | Tyr362, Phe366, Lys369, Leu370, Leu373, Met378, Val382, Phe386 |
@@ -103,6 +101,7 @@ In order to run the program it is necessary to have the following requirements i
 
 The program is written in Python language so Python version 3 or higher is required. Also, for python programs to work properly the following libraries are needed:
 - [Python](https://www.python.org)
+- [PyMOL](https://pymol.org)
 - [Gromacs](https://gromacs.bioexcel.eu)
 - [Matplotlib](https://matplotlib.org)
 - [MDAnalysis](https://www.mdanalysis.org)
@@ -167,6 +166,58 @@ This files can be filtered to select specific chains:
 ```
 python obtain_specific_chains.py -pdb file.pdb -c A B -o ../Output/filtered.pdb
 ```
+For example in the case of TAZ-TEAD complex we use:
+
+```
+python obtain_specific_chains.py -pdb ../Input_files/COMPLEXS/FORMED_FROM_PDB/5gn0.pdb -c B G -o TAZ_TEAD_2_SUBUNITS_COMPLEX.pdb
+```
+
+### PyMOL to template
+
+In [PyMOL](https://pymol.org) terminal.
+
+```
+load template.pdb, template
+```
+ Then we can load our molecules, for example TAZ and TEAD for different .pdb such as:
+
+```
+load TAZ.pdb, YAP
+```
+```
+load TEAD.pdb, TEAD
+```
+If they are in a same .pdb file (complex_not_aligned.pdb) but they are not aligned:
+
+```
+load complex_not_aligned.pdb, complex
+```
+We need to identify the chains of each element
+
+```
+create TEAD, complex and chain A
+create TAZ, complex and chain B
+```
+Now we can do the alignment
+
+```
+create TEAD, complex and chain A
+create TAZ, complex and chain B
+```
+
+If TEAD is in our template in chain A and TAZ is in the template in chain B
+```
+align TEAD, template and chain A
+align TAZ, template and chain B
+```
+Finally we create a new object to save the created complex! and save the coordinates.
+
+```
+create new_complex_aligned, TAZ or TEAD
+save aligned_TAZ_TEAD.pdb, new_complex_aligned
+```
+
+
 ### In the main.py file, in the inputs section we can choose:
 o	File preparation for protein-ligand simulations.
 
