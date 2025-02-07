@@ -70,9 +70,9 @@ Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate 
 
 |               | **YAP**             | **TEAD**                                |
 |--------------|--------------------|-----------------------------------------|
-| **Interface 1 &beta-Helix** | residues (52–58)     | residues (318–324)                        |
-| **Interface 2 &alpha-Helix** | residues 1-12 (Most important: L4,L7,F8 )(61–73)     | residues (345–369)                        |
-| **Interface 3 &alpha-Helix** | residues 25-39(86–100)   (Most important: M25,L30,F34 )  | I(247), V(242), L(272), V(391, Y406, D249, E240, W276, H404) |
+| **Interface 1 $\beta$-Helix** | residues (52–58)     | residues (318–324)                        |
+| **Interface 2 $\alpha$-Helix** | residues 1-12 (Most important: L4,L7,F8 )(61–73)     | residues (345–369)                        |
+| **Interface 3 $\alpha$-Helix** | residues 25-39(86–100)   (Most important: M25,L30,F34 )  | I(247), V(242), L(272), V(391, Y406, D249, E240, W276, H404) |
 
 From [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)
  #### Summary of Interface Amino Acids TAZ-TEAD
