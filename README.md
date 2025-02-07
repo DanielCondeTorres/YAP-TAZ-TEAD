@@ -261,6 +261,18 @@ From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.unipro
     ```
     * Obtained from 5GN0
 
+> [!NOTE] 
+The YAP and TAZ human sequences from [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short) are, respectively:
+```txt
+AGHQIVHVRGDSETDETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
+```
+
+
+```txt
+PGQQVIHVTQDLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD
+```
+
+
 > [!IMPORTANT]
 > Here is the table with the amino acid codes in both one-letter and three-letter formats:
 
