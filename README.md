@@ -324,6 +324,27 @@ These previous files are stored in the folder output.
 ## Analysis 📊
 
 This section covers the analysis of the complex (go to Working_Area/ANALYSIS)
+
+
+We recommend focusing on the trajectory; for the initial analyses, water is not necessary. Therefore:
+```
+gmx trjconv -s prod.tpr -f prod.xtc -o complex.xtc
+Select Protein
+gmx trjconv -s prod.tpr -f prod.xtc -o complex.pdb -b 0 -e 0
+Select Protein
+```
+MDtraj can present some problems with .pdb files so:
+```
+complex.pdb > complex_clean.pdb
+ ```
+
+ > [!NOTE] 
+Installed 
+```
+pip install pdb-tools
+```
+Use this files for analysis_complex.py :)
+
 So far with analysis complex performs the contact matrix between two subunits of the complex and the secondary structure per residue of each subunit:
 The inputs are a .pdb of your system and an associated trajectory in .xtc format
 
