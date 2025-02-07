@@ -71,7 +71,7 @@ def contact_map(u, cutoff: float = 5, frames_to_analyze: int = 1):
 
     # Create the contact map figure
     plt.figure(figsize=(18, 10))
-    plt.pcolormesh(contact_map, cmap="Blues", edgecolors="black", linewidth=0.5)
+    plt.pcolormesh(contact_map, cmap="plasma", edgecolors="black", linewidth=0.5)
 
     # Add color bar for contact frequency
     plt.colorbar(label="Contact Frequency")
@@ -88,7 +88,7 @@ def contact_map(u, cutoff: float = 5, frames_to_analyze: int = 1):
     plt.title("Contact Map Between Protein Subunits")
         # Adjust xticks and yticks spacing to make the plot more readable
     plt.xticks(ticks=np.arange(0, len(residues1), 2), labels=residues1[::2], rotation=90, fontsize=8)  # Show every 5th label
-    plt.yticks(ticks=np.arange(0, len(residues2), 2), labels=residues2[::2], fontsize=8)  # Show every 5th label
+    plt.yticks(ticks=np.arange(0, len(residues2), 1), labels=residues2[::1], fontsize=8)  # Show every 5th label
     plt.gca().set_xticks(np.arange(len(residues1)))  # Ensure every tick has a label
     plt.gca().set_yticks(np.arange(len(residues2)))
     plt.tight_layout()

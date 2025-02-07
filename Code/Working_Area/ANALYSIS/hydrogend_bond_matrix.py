@@ -96,7 +96,7 @@ def hydrogen_bond_matrix(tpr, xtc):
     plt.figure(figsize=(18, 10))
 
     # Plot the heatmap
-    plt.pcolormesh(matrix.T, cmap="Blues", edgecolors="black", linewidth=0.5)
+    plt.pcolormesh(matrix.T, cmap="plasma", edgecolors="black", linewidth=0.5)
     plt.colorbar(label="Hydrogen Bond Frequency")
     plt.xlabel('Residue (Protein B)')
     plt.ylabel('Residue (Protein A)')
@@ -104,7 +104,7 @@ def hydrogen_bond_matrix(tpr, xtc):
 
     # Customize tick labels for residues
     plt.xticks(ticks=np.arange(0, len(residues_names1), 2), labels=residues_names1[::2], rotation=90, fontsize=8)  # Show every 2nd label
-    plt.yticks(ticks=np.arange(0, len(residues_names2), 2), labels=residues_names2[::2], fontsize=8)  # Show every 2nd label
+    plt.yticks(ticks=np.arange(0, len(residues_names2), 1), labels=residues_names2[::1], fontsize=8)  # Show every 2nd label
     plt.gca().set_xticks(np.arange(len(residues_names1)))  # Ensure every tick has a label
     plt.gca().set_yticks(np.arange(len(residues_names2)))
     plt.tight_layout()
