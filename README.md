@@ -64,6 +64,28 @@ Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate 
 - Targeting mechanical signals may help regulate YAP/TAZ activity in disease contexts.
 
 
+### Interaction from literature
+
+#### Summary of Interface Amino Acids YAP-TEAD
+
+|               | **YAP**             | **TEAD**                                |
+|--------------|--------------------|-----------------------------------------|
+| **Interface 1** | residues 52–58     | residues 318–324                        |
+| **Interface 2** | residues 61–73     | residues 345–369                        |
+| **Interface 3** | residues 86–100    | I247, V242, L272, V391, Y406, D249, E240, W276, H404 |
+
+From [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)
+ #### Summary of Interface Amino Acids TAZ-TEAD
+
+ # Summary of Interface Amino Acids
+
+|               | **TAZ**                             | **TEAD**                                      |
+|--------------|-----------------------------------|----------------------------------------------|
+| **Interface 1** | Leu28, Leu31, Phe32, Val35, Met36 | Tyr362, Phe366, Lys369, Leu370, Leu373, Met378, Val382, Phe386 |
+| **Interface 2** | Phe52, Phe53, Pro56             | Leu288, Lys290, Trp292, Val407, Gln418       |
+
+From [Kaan, Hung Yi Kristal, et al. "Crystal structure of TAZ-TEAD complex reveals a distinct interaction mode from that of YAP-TEAD complex." Scientific reports 7.1 (2017): 2035.](https://www.nature.com/articles/s41598-017-02219-9)
+
 ### Goal
 <p align="justify"> 
 The goal of this repository is to conduct molecular simulations to study a protein-protein complex implicated in cancer and to identify potential drugs to disrupt its formation. 
