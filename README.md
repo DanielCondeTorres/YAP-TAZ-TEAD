@@ -259,6 +259,35 @@ From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.unipro
     DLNWISMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
     ```
     * Obtained from 5GN0
+
+> [!IMPORTANT]
+> Here is the table with the amino acid codes in both one-letter and three-letter formats:
+
+| Amino Acid    | 1-Letter Code | 3-Letter Code |
+|----------------|---------------|---------------|
+| Alanine       | A             | ALA           |
+| Cysteine      | C             | CYS           |
+| Aspartic acid | D             | ASP           |
+| Glutamic acid | E             | GLU           |
+| Phenylalanine | F             | PHE           |
+| Glycine       | G             | GLY           |
+| Histidine     | H             | HIS           |
+| Isoleucine    | I             | ILE           |
+| Leucine       | L             | LEU           |
+| Lysine        | K             | LYS           |
+| Methionine    | M             | MET           |
+| Asparagine    | N             | ASN           |
+| Proline       | P             | PRO           |
+| Glutamine     | Q             | GLN           |
+| Arginine      | R             | ARG           |
+| Serine        | S             | SER           |
+| Threonine     | T             | THR           |
+| Valine        | V             | VAL           |
+| Tryptophan    | W             | TRP           |
+| Tyrosine      | Y             | TYR           |
+
+
+
       
 From AlphaFold a .cif file will be obtained, this can be easy converted to a .pdb file with:
 
