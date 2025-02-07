@@ -248,15 +248,18 @@ From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.unipro
 -  .pdb from [TAZ](): 
     ```txt
     PLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD 
-    ```
 
 - .pdb from [TEAD]():
-  ```txt                                                                                                                                                           SMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
- ``` 
+  
+    ```txt                                                                                                                                                                                                                                      SMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
+
+
  Obtained from 3JUA or 
-   ```txt
+ 
+  ```
 DLNWISMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
-```
+  ```
+
 Obtained from 5GN0
 From AlphaFold a .cif file will be obtained, this can be easy converted to a .pdb file with:
 
