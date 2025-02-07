@@ -210,6 +210,8 @@ If TEAD is in our template in chain A and TAZ is in the template in chain B
 align TEAD, template and chain A
 align TAZ, template and chain B
 ```
+Instead of **align** you can use **super** to not break the secondary structure of your protein.
+
 Finally we create a new object to save the created complex! and save the coordinates.
 
 ```
@@ -217,6 +219,11 @@ create new_complex_aligned, TAZ or TEAD
 save aligned_TAZ_TEAD.pdb, new_complex_aligned
 ```
 
+In one line:
+
+```
+pymol -cq -d "load archivo.pdb; align cadena_A, plantilla; align cadena_B, plantilla; save cadenas_alineadas.pdb"
+```
 
 ### In the main.py file, in the inputs section we can choose:
 o	File preparation for protein-ligand simulations.
