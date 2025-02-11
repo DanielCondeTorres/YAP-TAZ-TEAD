@@ -262,36 +262,48 @@ o	File preparation for protein-ligand simulations.
 
 
 #### Example
-From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.uniprot.org/uniprotkb/Q15562/entry), from [PDB](https://www.rcsb.org) or from [310.ai](https://310.ai/copilot/login)
--  .pdb from [YAP](): 
+From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.uniprot.org/uniprotkb/Q15562/entry), from [PDB](https://www.rcsb.org) or from [310.ai](https://310.ai/copilot/login) (From *Mus Musculus*)
+-  .pdb from [YAP from 3JUA](https://www.rcsb.org/structure/3JUA): 
     ```txt
     ETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
 
--  .pdb from [TAZ](): 
+-  .pdb from [TAZ from 5GN0](https://www.rcsb.org/structure/5GN0): 
     ```txt
     PLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD 
 
-- .pdb from [TEAD]():
+- .pdb from TEAD.
+  * Obtained from [3JUA](https://www.rcsb.org/structure/3JUA) 
+
     ```txt
-    SMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
+   SMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
     ```
-   * Obtained from 3JUA or 
+
+   * or, Obtained from [5GN0](https://www.rcsb.org/structure/5GN0)
  
     ```txt
     DLNWISMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
     ```
-    * Obtained from 5GN0
+    
+    > [!NOTE] 
+    [TEAD from 5GN0](https://www.rcsb.org/structure/5GN0) has DLNWI at start while [TEAD from JUA](https://www.rcsb.org/structure/3JUA) has not:
+
 
 > [!NOTE] 
-The YAP and TAZ human sequences from [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short) are, respectively:
-```txt
-AGHQIVHVRGDSETDETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
-```
+The YAP, TAZ and TEAD-1 human sequences from [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short) are, respectively:
+  * YAP:
+  ```txt
+  AGHQIVHVRGDSETDETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
+  ```
 
+* TAZ:
+  ```txt
+  PGQQVIHVTQDLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD
+  ```
+* TEAD-1
+  ```txt
+RSIGTTKLRLVEFSAFLEQQRDPDSYNKHLFVHIGHANHSYSDPLLESVDIRQIYDKFPEKKGGLKELFGKGPQNAFFLVKFWADLNCNIQDDAGAFYGVTSQYESSENMTVTCSTKVCSFGKQVVEKVETEYARFENGRFVYRINRSPMCEYMINFIHKLKHLPEKYMMNSVLENFTILLVVTNRDTQETLLCMACVFEVSNSEHGAQHHIYRLVKD
+  ```
 
-```txt
-PGQQVIHVTQDLDTDLEALFNSVMNPKPSSWRKKILPESFFKEPD
-```
 > [!NOTE] 
 The YAP/TEAD human sequences from [3KYS](https://www.rcsb.org/structure/3KYS)
 
@@ -300,7 +312,7 @@ The YAP/TEAD human sequences from [3KYS](https://www.rcsb.org/structure/3KYS)
 SHMAGHQIVHVRGDSETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPEPKSHSRQASTDAGTAGALTPQHVRAHSSPASLQLGAVSPGTLTPTGVVSGPAATPTAQHLRQSSFEIPDDV
 ```
 
-* TEAD:
+* TEAD (the difference with [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short) is the initial M):
 ```txt
 MRSIGTTKLRLVEFSAFLEQQRDPDSYNKHLFVHIGHANHSYSDPLLESVDIRQIYDKFPEKKGGLKELFGKGPQNAFFLVKFWADLNCNIQDDAGAFYGVTSQYESSENMTVTCSTKVCSFGKQVVEKVETEYARFENGRFVYRINRSPMCEYMINFIHKLKHLPEKYMMNSVLENFTILLVVTNRDTQETLLCMACVFEVSNSEHGAQHHIYRLVKD
 ```
