@@ -250,11 +250,6 @@ pymol -cq -d "load archivo.pdb; align cadena_A, plantilla; align cadena_B, plant
 ### In the main.py file, in the inputs section we can choose:
 o	File preparation for protein-ligand simulations.
 
-> [!NOTE]  
-  INPUTS:
-  
-    * main_chain: string            # amino acid sequence
-    * ws_phase_1: float             # average interaction of an amino acid with solvent in phase 1
 
 ### Protein complex formation:
 - Obtain .pdb files of each unit of the complex. 
@@ -262,7 +257,11 @@ o	File preparation for protein-ligand simulations.
 
 
 #### Example
-From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.uniprot.org/uniprotkb/Q15562/entry), from [PDB](https://www.rcsb.org) or from [310.ai](https://310.ai/copilot/login) (From *Mus Musculus*)
+From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.uniprot.org/uniprotkb/Q15562/entry), from [PDB](https://www.rcsb.org) or from [310.ai](https://310.ai/copilot/login) 
+
+> [!NOTE]  
+ *Mus Musculus* sequence:
+ 
 -  .pdb from [YAP from 3JUA](https://www.rcsb.org/structure/3JUA): 
     ```txt
     ETDLEALFNAVMNPKTANVPQTVPMRLRKLPDSFFKPPE
