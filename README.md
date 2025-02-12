@@ -221,13 +221,8 @@ create TEAD, complex and chain A
 create TAZ, complex and chain B
 ```
 Now we can do the alignment
-
-```
-create TEAD, complex and chain A
-create TAZ, complex and chain B
-```
-
 If TEAD is in our template in chain A and TAZ is in the template in chain B
+
 ```
 align TEAD, template and chain A
 align TAZ, template and chain B
