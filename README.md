@@ -232,8 +232,8 @@ Instead of **align** you can use **super** to not break the secondary structure 
 Finally we create a new object to save the created complex! and save the coordinates.
 
 ```
-create new_complex_aligned, TAZ or TEAD
-save aligned_TAZ_TEAD.pdb, new_complex_aligned
+# create new_complex_aligned, TEAD or TAZ # Jump to the next, this one can create errors!
+save aligned_TAZ_TEAD.pdb,  TEAD or TAZ
 ```
 
 In one line:
