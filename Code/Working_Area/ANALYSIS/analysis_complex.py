@@ -173,9 +173,96 @@ def dssp_analysis(chain_id, trajectory_file, topology_file, residues_names):
     plt.show()
 
 
+def calculate_distance_between_centers_of_mass(u, labels_size: float  = 20, ticks_size: float = 16):
+    """
+    This function calculates and plots the distance between the centers of mass
+    of two subunits over time in a molecular dynamics simulation.
+
+    Arguments:
+    u -- MDAnalysis.Universe object representing the simulation
+    """
+    # Select the atoms for subunit1 and subunit2 (Cα atoms)
+    subunit1 = u.select_atoms("protein and (segid A or segid seg_0 or segid seg_0_Protein_chain_A or segid Protein_chain_A) and name CA")
+    subunit2 = u.select_atoms("protein and (segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B) and name CA")
+
+    # Initialize an empty list to store the distances and times
+    distances = []; times = []
+
+    # Iterate over the frames of the simulation
+    for ts in u.trajectory:
+        # Append the current time of the frame
+        times.append(ts.time)
+        # Calculate the center of mass for each subunit
+        com_subunit1 = subunit1.center_of_mass()
+        com_subunit2 = subunit2.center_of_mass()
+
+        # Calculate the distance between the centers of mass
+        distance = np.linalg.norm(com_subunit1 - com_subunit2)
+        distances.append(distance)
+
+    # Convert the distances list to a numpy array for easier handling
+    distances = np.array(distances)
+    plt.figure(figsize=(16, 10))
+    # Plot the distances over time
+    plt.plot(np.array(times)/1000, distances,linewidth=3)
+    plt.xlabel('Time (ns)', fontsize = labels_size)
+    plt.ylabel('Distance between Centers of Mass (Å)', fontsize = labels_size)
+    #plt.title('Distance between Centers of Mass of Subunits Over Time')
+    plt.yticks(fontsize=ticks_size);plt.xticks(fontsize=ticks_size)
+    plt.show()
 
 
 
+
+
+
+
+def calculate_number_of_contacts(u, cutoff=5.0,labels_size: float  = 20, ticks_size: float = 16):
+    """
+    This function calculates and plots the number of contacts between two subunits
+    over time in a molecular dynamics simulation.
+
+    Arguments:
+    u -- MDAnalysis.Universe object representing the simulation
+    cutoff -- The distance (in Å) within which atoms are considered in contact (default is 5.0 Å)
+    """
+    # Select the atoms for subunit1 and subunit2 (Cα atoms)
+    subunit1 = u.select_atoms("protein and (segid A or segid seg_0 or segid seg_0_Protein_chain_A or segid Protein_chain_A) and name CA")
+    subunit2 = u.select_atoms("protein and (segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B) and name CA")
+
+    # Initialize lists to store the times and number of contacts
+    times = []
+    num_contacts = []
+
+    # Iterate over the frames of the simulation
+    for ts in u.trajectory:
+        # Append the current time of the frame (convert from ps to ns)
+        times.append(ts.time / 1000.0)  # Convert from ps to ns
+
+        # Calculate the pairwise distances between atoms in subunit1 and subunit2
+        contact_count = 0
+        for atom1 in subunit1:
+            for atom2 in subunit2:
+                # Calculate the distance between the atoms
+                distance = np.linalg.norm(atom1.position - atom2.position)
+                if distance < cutoff:
+                    contact_count += 1  # Count this as a contact if within the cutoff
+
+        # Append the number of contacts for this frame
+        num_contacts.append(contact_count)
+
+    # Convert the lists to numpy arrays for easier handling
+    times = np.array(times)
+    num_contacts = np.array(num_contacts)
+
+    # Plot the number of contacts over time
+    plt.figure(figsize=(16, 10))
+    plt.plot(times, num_contacts,linewidth=3)
+    plt.xlabel('Time (ns)', fontsize = labels_size)  # Time in nanoseconds
+    plt.ylabel('Number of Contacts', fontsize = labels_size)
+    plt.yticks(fontsize=ticks_size); plt.xticks(fontsize=ticks_size)
+    #plt.title('Number of Contacts between Subunits Over Time', fontsize = 20)
+    plt.show()
 
 
 
@@ -187,7 +274,8 @@ if __name__ == "__main__":
 
     # Load trajectory once
     u = load_trajectory(args.pdb, args.xtc)
-
+    calculate_number_of_contacts(u, cutoff=8.0)
+    alculate_distance_between_centers_of_mass(u)
     # Perform analysis on the loaded trajectory
     residues_1_names, residues_2_names = contact_map(u, cutoff=8, frames_to_analyze=10)
     dssp_analysis(0, args.xtc, args.pdb,residues_1_names)
