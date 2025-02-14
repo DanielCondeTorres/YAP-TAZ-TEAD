@@ -83,7 +83,7 @@ def contact_map(u, cutoff: float = 5, frames_to_analyze: int = 1):
     # Select subunits (adjust the segment IDs based on your system)
     subunit1 = u.select_atoms("protein and (segid A or segid seg_0 or segid seg_0_Protein_chain_A or segid Protein_chain_A) and name CA")  # Cα atoms from subunit 1
     print('subunit1:', subunit1)
-    subunit2 = u.select_atoms("protein and (segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B or seg_1_Protein_chain_A2) and name CA")  # Cα atoms from subunit 2
+    subunit2 = u.select_atoms("protein and (segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B or segid seg_1_Protein_chain_A2) and name CA")  # Cα atoms from subunit 2
 
     # Get the residue names and renumber them starting from 1
     residues1 = [f"{res.resname}{i+1}" for i, res in enumerate(subunit1.residues)]
