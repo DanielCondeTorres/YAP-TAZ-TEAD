@@ -30,7 +30,7 @@ def hydrogen_bond_matrix(tpr, xtc):
 
     # Define proteins (example using chain identifiers)
     prot1 = u.select_atoms('segid A or segid seg_0 or segid seg_0_Protein_chain_A or segid Protein_chain_A')
-    prot2 = u.select_atoms('segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B or seg_1_Protein_chain_A2')
+    prot2 = u.select_atoms('segid B or segid seg_1 or segid seg_1_Protein_chain_B or segid Protein_chain_B or segid seg_1_Protein_chain_A2')
     
     # Extract residue names for each protein chain
     residues_names1 = [f"{res.resname}{i+1}" for i, res in enumerate(prot1.residues)]
