@@ -288,8 +288,8 @@ From [AlphaFold](https://alphafoldserver.com), from [UniProt](https://www.unipro
     DLNWISMRSIASSKLWMLEFSAFLERQQDPDTYNKHLFVHISQSSPSYSDPYLETVDIRQIYDKFPEKKGGLKELFERGPSNAFFLVKFWADLNTNIDDEGSAFYGVSSQYESPENMIITCSTKVCSFGKQVVEKVETEYARYENGHYLYRIHRSPLCEYMINFIHKLKHLPEKYMMNSVLENFTILQVVTNRDTQETLLCIAYVFEVSASEHGAQHHIYRLVKE
     ```
     
-    > [!NOTE] 
-    [TEAD from 5GN0](https://www.rcsb.org/structure/5GN0) has DLNWI at start while [TEAD from JUA](https://www.rcsb.org/structure/3JUA) has not:
+> [!IMPORTANT] 
+[TEAD from 5GN0](https://www.rcsb.org/structure/5GN0) has DLNWI at start while [TEAD from JUA](https://www.rcsb.org/structure/3JUA) has not:
 
 
 > [!NOTE] 
