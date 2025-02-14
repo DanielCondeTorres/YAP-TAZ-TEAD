@@ -80,16 +80,16 @@ Inactive Hippo Pathway: When Hippo signaling is suppressed, YAP/TAZ translocate 
 |               | **YAP**             | **TEAD**                                |
 |--------------|--------------------|-----------------------------------------|
 | **Interface 1 $\beta$-Helix** | residues (52–58)     | residues (318–324)                        |
-| **Interface 2 $\alpha$-Helix** | residues 1-12 (Most important: L4,L7,F8 )(61–73)     | residues (345–369)                        |
-| **Interface 3 $\alpha$-Helix** | residues 25-39(86–100)   (Most important: M25,L30,F34 )  | I(247), V(242), L(272), V(391, Y406, D249, E240, W276, H404) |
+| **Interface 2 $\alpha$-Helix** | residues (Most important: L4,L7,F8 )(61–73)     | residues (345–369)                        |
+| **Interface 3 $\alpha$-Helix** | residues (86–100)   (Most important: M25,L30,F34 )  | I(247), V(242), L(272), V(391, Y406, D249, E240, W276, H404) |
 
 From [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)
  #### Summary of Interface Amino Acids TAZ-TEAD
 
 |               | **TAZ**                             | **TEAD**                                      |
 |--------------|-----------------------------------|----------------------------------------------|
-| **Interface 1** | Leu6(28), Leu9(31), Phe10(32), Val13(35), Met14(36) | Tyr152(362), Phe156(366), Lys159(369), Leu160(370), Leu163(373), Met168(378), Val172(382), Phe176(386) |
-| **Interface 2** | Phe30(52), Phe31(53), Pro34(56)             | Leu81(288), Lys83(290), Trp85(292), Val407, Gln418       |
+| **Interface 1** | Leu(28), Leu(31), Phe(32), Val(35), Met(36) | Tyr(362), Phe(366), Lys(369), Leu(370), Leu(373), Met(378), Val(382), Phe(386) |
+| **Interface 2** | Phe(52), Phe(53), Pro(56)             | Leu(288), Lys(290), Trp(292), Val(407), Gln(418)       |
 
 In () we put the number of the paper the other one is the number sequence.
 From [Kaan, Hung Yi Kristal, et al. "Crystal structure of TAZ-TEAD complex reveals a distinct interaction mode from that of YAP-TEAD complex." Scientific reports 7.1 (2017): 2035.](https://www.nature.com/articles/s41598-017-02219-9)
