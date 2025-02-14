@@ -7,7 +7,16 @@
 -	An automated GROMACS protocol for protein-ligand simulations.
 - An integrated workflow combining docking and molecular dynamics simulations.
 
+![taz_tead](https://github.com/user-attachments/assets/28c65242-0d69-45f2-8466-75fda9355c3d)
 
+
+[![GitHub forks](https://img.shields.io/github/forks/DanielCondeTorres/YAP-TAZ-TEAD)](https://github.com/DanielCondeTorres/YAP-TAZ-TEAD/network)
+[![GitHub issues](https://img.shields.io/github/issues/DanielCondeTorres/YAP-TAZ-TEAD)](https://github.com/DanielCondeTorres/YAP-TAZ-TEAD)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/DanielCondeTorres/YAP-TAZ-TEAD)
+[![GitHub stars](https://img.shields.io/github/stars/DanielCondeTorres/YAP-TAZ-TEAD)](YAP-TAZ-TEAD/stargazers)
+![GitHub repo size](https://img.shields.io/github/repo-size/DanielCondeTorres/YAP-TAZ-TEAD)
+[![GitHub license](https://img.shields.io/github/license/DanielCondeTorres/YAP-TAZ-TEAD)](https://github.com/DanielCondeTorres/YAP-TAZ-TEAD)
+![GitHub language count](https://img.shields.io/github/languages/count/DanielCondeTorres/YAP-TAZ-TEAD)
 
 <!-- TABLE OF CONTENTS -->
 <details>
