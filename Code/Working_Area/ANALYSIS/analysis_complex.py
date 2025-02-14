@@ -7,6 +7,43 @@ from MDAnalysis.analysis.hydrogenbonds import HydrogenBondAnalysis
 import mdtraj as md
 import matplotlib.patches as mpatches
 
+def moving_average(x: list, n: int=30):
+    """
+    This function computes the moving average of a time series (array `x`) over a specified window size `n`.
+
+    Parameters:
+    x (array-like): Input time series data. It is a list or NumPy array of numerical values.
+    n (int): The window size for the moving average. This is the number of consecutive data points used to calculate the average.
+
+    Returns:
+    list: A list of moving average values, where each value represents the average of the `n` preceding data points in the time series.
+
+    Notes:
+    - The first `n-1` values will be `NaN` or undefined, since there are not enough points at the beginning to calculate a full window average.
+    - This method uses a cumulative sum approach to efficiently compute the moving average.
+    """
+
+    # Initialize the result list
+    result = []
+    # Calculate the moving average for the first n-1 points (undefined)
+    for i in range(n):
+        if i == 0:
+            pass  # The first element has no moving average, so we skip it
+        else:
+            # Calculate the average of the first i points
+            result.append(float(np.sum(x[0:i]) / len(x[0:i])))
+    # Calculate cumulative sum of the input array
+    cumsum = np.cumsum(np.insert(x, 0, 0))
+    # Apply the formula to compute the moving average
+    res = (cumsum[n:] - cumsum[:-n]) / float(n)
+    # Append the result of the moving average to the result list
+    for elem in res:
+        result.append(elem)
+    return result
+
+
+
+
 def load_trajectory(pdb, xtc):
     """
     Load the system (structure and trajectory) into memory for faster subsequent analyses.
@@ -202,6 +239,7 @@ def calculate_distance_between_centers_of_mass(u, labels_size: float  = 20, tick
 
     # Convert the distances list to a numpy array for easier handling
     distances = np.array(distances)
+    distances = moving_average(distances)
     plt.figure(figsize=(16, 10))
     # Plot the distances over time
     plt.plot(np.array(times)/1000, distances,linewidth=3)
@@ -254,7 +292,7 @@ def calculate_number_of_contacts(u, cutoff=5.0,labels_size: float  = 20, ticks_s
     # Convert the lists to numpy arrays for easier handling
     times = np.array(times)
     num_contacts = np.array(num_contacts)
-
+    num_contacts = moving_average(num_contacts)
     # Plot the number of contacts over time
     plt.figure(figsize=(16, 10))
     plt.plot(times, num_contacts,linewidth=3)
