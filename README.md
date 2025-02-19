@@ -269,12 +269,8 @@ or
  python cif_to_pdb_converter.py -cif input_file.cif -o output_file.pdb
  ```
 
-> [!IMPORTANT]
-Allows us to modify different parameters related to the creation of the interface.
 
-``` 
-*
-```             
+        
 
 
 Therefore, in the first case the importance of the interface will be ``` cls._instance._weight_interface * -1 ``` and in the second case ``` cls._instance._weight_interface * 1 ```.
@@ -286,8 +282,31 @@ Steps:
 - Use [Avogadro](https://sourceforge.net/projects/avogadro/files/latest/download) to add hydrogens and obtain a good structure and save the file as a .mol2 file of the structure
 - Obtain the topolgy from [CGenFF](https://app.cgenff.com/login) or [acpype](https://github.com/alanwilter/acpype) 
 ### Doing the docking.
- You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org)
+ You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org).
+ Use [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/) to obtain the .pdbqt file
 
+``` 
+ pythonsh $PATH_TO/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py -r recptor.pdb -o receptor.pdbqt
+```     
+``` 
+ pythonsh $PATH_TO/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py -l ligand.pdb -o ligand.pdbqt
+```     
+```   
+vina --config config.txt --cpu 1
+```   
+```
+grep -v BRANCH all.pdbqt | grep -v ROOT | grep -v TORSDOF > docking_results.pdb
+```
+Select best conformation (automatizar):
+
+```   
+awk '/^MODEL 1/,/^ENDMDL/' docking_results.pdb > best_conformation.pdb
+```   
+ Concatenate structures:
+
+ ``` 
+pymol -c -d "load YAP.pdb, receptor; load best_conformation.pdb, ligand; create complex, receptor or ligand; save complex.pdb; quit"
+``` 
 
 <!-- Output files -->
 ## Output files 📋
