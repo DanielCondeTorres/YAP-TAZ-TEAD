@@ -279,6 +279,14 @@ Allows us to modify different parameters related to the creation of the interfac
 
 Therefore, in the first case the importance of the interface will be ``` cls._instance._weight_interface * -1 ``` and in the second case ``` cls._instance._weight_interface * 1 ```.
 
+### Obtain the ligand topology
+Steps:
+- Search the [Smiles Code](https://www.raybiotech.com/) or similar
+- Convert it to [.mol](https://www.aatbio.com/tools/smiles-to-mol-converter). If you have access to [ChemDraw3D](https://revvitysignals.com/products/research/chemdraw)
+- Use [Avogadro](https://sourceforge.net/projects/avogadro/files/latest/download) to add hydrogens and obtain a good structure and save the file as a .mol2 file of the structure
+- Obtain the topolgy from [CGenFF](https://app.cgenff.com/login) or [acpype](https://github.com/alanwilter/acpype) 
+### Doing the docking.
+ You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org)
 
 
 <!-- Output files -->
