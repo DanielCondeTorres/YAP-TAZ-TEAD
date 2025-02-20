@@ -203,6 +203,7 @@ For example in the case of TAZ-TEAD complex we use:
 python obtain_specific_chains.py -pdb ../Input_files/COMPLEXS/FORMED_FROM_PDB/5gn0.pdb -c B G -o TAZ_TEAD_2_SUBUNITS_COMPLEX.pdb
 ```
 
+
 ### PyMOL to template
 
 In [PyMOL](https://pymol.org) terminal.
@@ -302,11 +303,24 @@ Select best conformation (automatizar):
 ```   
 awk '/^MODEL 1/,/^ENDMDL/' docking_results.pdb > best_conformation.pdb
 ```   
- Concatenate structures:
+ Concatenate structures with one of this options:
 
  ``` 
 pymol -c -d "load YAP.pdb, receptor; load best_conformation.pdb, ligand; create complex, receptor or ligand; save complex.pdb; quit"
+python complex_ligand_formation.py -receptor complex.pdb -ligand best_conformation.pdb
 ``` 
+
+
+
+
+All the steps together with:
+
+```
+make execute_complex_ligand_formation PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh
+```
+
+
+
 
 <!-- Output files -->
 ## Output files 📋

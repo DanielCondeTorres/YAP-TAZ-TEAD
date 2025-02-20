@@ -30,7 +30,24 @@ cif_to_pdb:
 production:
 	sbatch production.sh
 
-help:
+# Rule usage:  make execute_complex_ligand_formation PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh
+execute_complex_ligand_formation:
+# Convert .pdb complex last frame to a complex without water.
+        echo "Protein" | gmx trjconv -f $(PDB_INPUT) -o complex_protein.pdb -s $(PDB_INPUT)
+# Obtain the CHAIN that it is going to be used to the docking
+        python obtain_specific_chains.py -pdb complex_protein.pdb -c $(RECEPTOR_CHAIN) -o receptor.pdb
+		cp receptor.pdb ../Output/
+# Create pdbqt files
+        $(PATH_TO_pythonsh) $(PATH_TO)/prepare_receptor4.py -r receptor.pdb -o receptor.pdbqt
+        $(PATH_TO_pythonsh) $(PATH_TO)/prepare_ligand4.py -l $(LIGAND) -o ligand.pdbqt
+# Create config.txt file
+        python generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
+        vina --config config.txt --cpu 1 --num_modes 15 > log.txt
+        python obtain_best_affinity.py -log log.txt
+		cp log.txt ../Output/
+# Extract the best conformation
+        ./run_docking.sh
+		cp best_conformation.pdb ../Output/
 # Help rule
 help:
 	@echo "Required input files must be provided as follows:"
@@ -49,6 +66,10 @@ help:
 
 # Regla para limpiar (si fuera necesario)
 clean:
+	# No es necesario en este caso, pero se podría agregar para otros archivos
+	rm *mdp *pdb *txt 
+
+cleanOutput:
 	# No es necesario en este caso, pero se podría agregar para otros archivos
 	rm ../Output/* 
 	rm *mdp *pdb ../Output/.itp
