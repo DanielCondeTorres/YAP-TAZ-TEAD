@@ -41,13 +41,13 @@ execute_complex_ligand_formation:
         $(PATH_TO_pythonsh) $(PATH_TO)/prepare_receptor4.py -r receptor.pdb -o receptor.pdbqt
         $(PATH_TO_pythonsh) $(PATH_TO)/prepare_ligand4.py -l $(LIGAND) -o ligand.pdbqt
 # Create config.txt file
-        python generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
+        python Script_for_ligand_protein_formation/generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
         vina --config config.txt --cpu 1 --num_modes 15 > log.txt
-        python obtain_best_affinity.py -log log.txt
+        python Script_for_ligand_protein_formation/obtain_best_affinity.py -log log.txt
 		cp log.txt ../Output/
 # Extract the best conformation
 #run_docking.sh
-		bash run_docking.sh $(LIGAND) $(PDB_INPUT)
+		bash Script_for_ligand_protein_formation/run_docking.sh $(LIGAND) $(PDB_INPUT)
 		cp complex_ligand.pdb ../Output/
 		cp posre.itp ../Output/
 # Rule usage:  make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb

@@ -13,3 +13,7 @@ gmx mdrun -v -deffnm ../Output/min -ntmpi 4
 # FEP equilibration NVT
 gmx grompp -f ../Input_files/MDP_FILES/eq_nvt_fep.mdp -c ../Output/min.gro  -r ../Output/min.gro -p ../Output/topol.top -o ../Output/eq_fes.tpr -maxwarn 2
 gmx mdrun -v -deffnm ../Output/eq_fes -ntmpi 4
+
+# Equilibración NPT
+gmx grompp -f ../Input_files/MDP_FILES/eq_npt.mdp -c ../Output/eq_fes.gro -p ../Output/topol.top -o ../Output/eq_2.tpr -r ../Output/eq_fes.gro -maxwarn 2
+gmx mdrun -v -deffnm ../Output/eq_2 -ntmpi 4
