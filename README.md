@@ -282,6 +282,8 @@ Steps:
 - Convert it to [.mol](https://www.aatbio.com/tools/smiles-to-mol-converter). If you have access to [ChemDraw3D](https://revvitysignals.com/products/research/chemdraw)
 - Use [Avogadro](https://sourceforge.net/projects/avogadro/files/latest/download) to add hydrogens and obtain a good structure and save the file as a .mol2 file of the structure
 - Obtain the topolgy from [CGenFF](https://app.cgenff.com/login) or [acpype](https://github.com/alanwilter/acpype) 
+> [!NOTE]
+Remember to convert the .top file to a valid .itp file
 ### Doing the docking.
  You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org).
  Use [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/) to obtain the .pdbqt file
@@ -313,14 +315,28 @@ python complex_ligand_formation.py -receptor complex.pdb -ligand best_conformati
 
 
 
-All the steps together with:
+All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
 
 ```
 make execute_complex_ligand_formation PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh
 ```
+> [!IMPORTANT]
+Inputs:
+- **PDB_INPUT**: PDB of your protein complex
+- **RECEPTOR_CHAIN**: Chain of PDB input where the ligand will be attach (i.e A, B...)
+- **LIGAND**: PDB of you ligand (you can obtain it from [CGenFF](https://app.cgenff.com/login))
+- **PATH_TO_pythonsh**: Path to your pythonsh installation (obtained from [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/))
+- **PATH_TO**: Path to Utilities24 of [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/), it should be something like ../MGLToolsPckgs/AutoDockTools/Utilities24
+Output:
+- **complex_ligand.pdb**: PDB with the protein complex and the ligand after the Docking.
 
+The next step is to run an [FEP simulation](https://tutorials.gromacs.org/docs/free-energy-of-solvation.html) in [Gromacs](https://gromacs.bioexcel.eu). This simulation is performed to allow the ligand to gradually incorporate into the protein complex rather than doing so abruptly 
 
-
+```
+make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
+```
+Inputs:
+- **PDB_INPUT_COMPLEX_LIGAND**:  PDB with the protein complex and the ligand after the Docking (complex_ligand.pdb in the previous step).
 
 <!-- Output files -->
 ## Output files 📋

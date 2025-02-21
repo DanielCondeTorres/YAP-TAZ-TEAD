@@ -46,8 +46,14 @@ execute_complex_ligand_formation:
         python obtain_best_affinity.py -log log.txt
 		cp log.txt ../Output/
 # Extract the best conformation
-        ./run_docking.sh
-		cp best_conformation.pdb ../Output/
+#run_docking.sh
+		bash run_docking.sh $(LIGAND) $(PDB_INPUT)
+		cp complex_ligand.pdb ../Output/
+		cp posre.itp ../Output/
+# Rule usage:  make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
+execute_complex_ligand_simulation:
+	bash main_ligand.sh $(PDB_INPUT_COMPLEX_LIGAND)
+
 # Help rule
 help:
 	@echo "Required input files must be provided as follows:"
