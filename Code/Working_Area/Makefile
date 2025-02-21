@@ -30,31 +30,42 @@ cif_to_pdb:
 production:
 	sbatch production.sh
 
-# Rule usage:  make execute_complex_ligand_formation PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb 
+# Rule usage:  make execute_complex_ligand_formation PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh OUTPUD_DIR=
 execute_complex_ligand_formation:
 # Convert .pdb complex last frame to a complex without water.
-        echo "Protein" | gmx trjconv -f $(PDB_INPUT) -o complex_protein.pdb -s $(PDB_INPUT)
+	echo "Protein" | gmx trjconv -f $(PDB_INPUT) -o complex_protein.pdb -s $(PDB_INPUT)
 # Obtain the CHAIN that it is going to be used to the docking
-        python obtain_specific_chains.py -pdb complex_protein.pdb -c $(RECEPTOR_CHAIN) -o receptor.pdb
-		cp receptor.pdb ../Output/
+	python obtain_specific_chains.py -pdb complex_protein.pdb -c $(RECEPTOR_CHAIN) -o receptor.pdb
+	cp receptor.pdb $(OUTPUT_DIR)
+	cp $(LIGAND) .
 # Create pdbqt files
-        $(PATH_TO_pythonsh) $(PATH_TO)/prepare_receptor4.py -r receptor.pdb -o receptor.pdbqt
-        $(PATH_TO_pythonsh) $(PATH_TO)/prepare_ligand4.py -l $(LIGAND) -o ligand.pdbqt
+	$(PATH_TO_pythonsh) $(PATH_TO)/prepare_receptor4.py -r receptor.pdb -o receptor.pdbqt
+	$(PATH_TO_pythonsh) $(PATH_TO)/prepare_ligand4.py -l $(LIGAND) -o ligand.pdbqt
 # Create config.txt file
-        python Script_for_ligand_protein_formation/generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
-        vina --config config.txt --cpu 1 --num_modes 15 > log.txt
-        python Script_for_ligand_protein_formation/obtain_best_affinity.py -log log.txt
-		cp log.txt ../Output/
+	python Script_for_ligand_protein_formation/generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
+	vina --config config.txt --cpu 1 --num_modes 15 > log.txt
+	python Script_for_ligand_protein_formation/obtain_best_affinity.py -log log.txt
+	cp log.txt ../Output/
 # Extract the best conformation
 #run_docking.sh
-		bash Script_for_ligand_protein_formation/run_docking.sh $(LIGAND) $(PDB_INPUT)
-		cp complex_ligand.pdb ../Output/
-		cp posre.itp ../Output/
+	bash Script_for_ligand_protein_formation/run_docking.sh $(LIGAND) $(PDB_INPUT)
+	cp posre.itp $(OUTPUT_DIR)
+	head -n 5 "$(PDB_INPUT)" > complex_ligand.pdb
+	cat estructura_combinada.pdb >> complex_ligand.pdb
+	cp complex_ligand.pdb $(OUTPUT_DIR)
 
-# Rule usage:  make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
+
+
+
+
+#Rule usage: make execute_complex_ligand_simulation TOPOLOGY=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/topol.top OUTPUT_DIR=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/ LIGAND_ITP=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/ligand.itp   PDB_INPUT_COMPLEX_LIGAND=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/complex_ligand.pdb FF=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/charmm36.ff
 execute_complex_ligand_simulation:
-	python Script_for_ligand_simulation/mod_topology_for_ligand.py -top $(TOPOLOGY) -o $(OUTPUT_TOPOLOGY_PATH)
-	bash main_ligand.sh $(PDB_INPUT_COMPLEX_LIGAND)
+	python Script_for_ligand_simulation/mod_topology_for_ligand.py -top $(TOPOLOGY) -o topol_mod.top
+	python  Script_for_ligand_simulation/mod_topology_for_ligand_2.py -top topol_mod.top -o topol_mod2.top
+	cp topol_mod2.top $(OUTPUT_DIR)
+	cp -r  $(FF) $(OUTPUT_DIR) 
+	cp $(LIGAND_ITP) $(OUTPUT_DIR)/ligand.itp
+	bash Script_for_ligand_simulation/main_ligand.sh $(PDB_INPUT_COMPLEX_LIGAND) $(OUTPUT_DIR)
 
 # Help rule
 help:
@@ -75,8 +86,7 @@ help:
 # Regla para limpiar (si fuera necesario)
 clean:
 	# No es necesario en este caso, pero se podría agregar para otros archivos
-	rm *mdp *pdb *txt 
-
+	rm *mdp *pdb *txt *itp *pdbqt *top  
 cleanOutput:
 	# No es necesario en este caso, pero se podría agregar para otros archivos
 	rm ../Output/* 

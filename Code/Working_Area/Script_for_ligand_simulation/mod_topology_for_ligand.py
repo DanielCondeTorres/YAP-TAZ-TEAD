@@ -1,3 +1,4 @@
+import argparse
 def modificar_topologia(archivo_original, archivo_modificado):
     # Leer el contenido del archivo original
     with open(archivo_original, 'r') as archivo:

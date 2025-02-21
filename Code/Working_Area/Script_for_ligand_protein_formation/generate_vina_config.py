@@ -22,7 +22,7 @@ def calculate_box_dimensions(pdb_file):
 def generate_config(receptor, ligand, output, center, size):
     config_content = f"""receptor = {receptor}
 ligand = {ligand}
-out = {output}
+out = all.pdbqt
 
 center_x = {center[0]:.3f}
 center_y = {center[1]:.3f}

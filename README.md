@@ -294,7 +294,7 @@ Need to copy in Output, the files from [CGenFF](https://app.cgenff.com/login) in
 All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
 
 ```
-make execute_complex_ligand_formation PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_PDB/receptor_docking.pdb  RECEPTOR_CHAIN=B LIGAND=verteporfin_gmx22.pdb PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh
+make execute_complex_ligand_formation PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/out.pdb  RECEPTOR_CHAIN=A LIGAND=../../../YAP-TAZ-TEAD/Code/Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/verteporfin_gmx22.pdb OUTPUT_DIR=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/
 ```
 > [!IMPORTANT]
 Inputs:
@@ -303,7 +303,7 @@ Inputs:
 - **LIGAND**: PDB of you ligand (you can obtain it from [CGenFF](https://app.cgenff.com/login))
 - **PATH_TO_pythonsh**: Path to your pythonsh installation (obtained from [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/))
 - **PATH_TO**: Path to Utilities24 of [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/), it should be something like ../MGLToolsPckgs/AutoDockTools/Utilities24
-
+- **OUTPUT_DIR**: Directory where files will be saved
 Output:
 - **complex_ligand.pdb**: PDB with the protein complex and the ligand after the Docking.
 
@@ -312,6 +312,7 @@ The next step is to run an [FEP simulation](https://tutorials.gromacs.org/docs/f
 ```
 make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
 ```
+OJO MODIFICAR EL TOPOL.TOP!!!!!!! puede ser modificando el charmm36 bonded y añadirlo en el mod_topol.py primero :) vamosss
 Inputs:
 - **PDB_INPUT_COMPLEX_LIGAND**:  PDB with the protein complex and the ligand after the Docking (complex_ligand.pdb in the previous step).
 
