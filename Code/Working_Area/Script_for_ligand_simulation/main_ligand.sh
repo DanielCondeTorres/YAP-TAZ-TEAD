@@ -13,7 +13,14 @@ gmx mdrun -v -deffnm ../Output/min -ntmpi 4
 # FEP equilibration NVT
 gmx grompp -f ../Input_files/MDP_FILES/eq_nvt_fep.mdp -c ../Output/min.gro  -r ../Output/min.gro -p ../Output/topol.top -o ../Output/eq_fes.tpr -maxwarn 2
 gmx mdrun -v -deffnm ../Output/eq_fes -ntmpi 4
-
-# Equilibración NPT
-gmx grompp -f ../Input_files/MDP_FILES/eq_npt.mdp -c ../Output/eq_fes.gro -p ../Output/topol.top -o ../Output/eq_2.tpr -r ../Output/eq_fes.gro -maxwarn 2
-gmx mdrun -v -deffnm ../Output/eq_2 -ntmpi 4
+# New minimization
+gmx grompp -f ../Input_files/MDP_FILES/min.mdp -c ../Output/eq_fes.gro -p ../Output/topol.top -o ../Output/min_fes.tpr -maxwarn 2
+gmx mdrun -v -deffnm ../Output/min_fes -ntmpi 4
+# Equilibración NPT 1
+gmx grompp -f ../Input_files/MDP_FILES/eq_npt_fep_1.mdp -c ../Output/min_fes.gro -p ../Output/topol.top -o ../Output/eq_npt_fep_1.tpr -r ../Output/min_fes.gro -maxwarn 2
+gmx mdrun -v -deffnm ../Output/eq_npt_fep_1 -ntmpi 4
+# Equilibración NPT 2
+gmx grompp -f ../Input_files/MDP_FILES/eq_npt_fep_2.mdp -c ../Output/eq_npt_fep_1.gro -p ../Output/topol.top -o ../Output/eq_npt_fep_2.tpr -maxwarn 2
+gmx mdrun -v -deffnm ../Output/eq_npt_fep_2 -ntmpi 4
+#Create prod.tpr
+gmx grompp -f ../Input_files/MDP_FILES/prod.mdp -c ../Output/eq_npt_fep_2.gro -p ../Output/topol.top -o ../Output/prod.tpr -maxwarn 2

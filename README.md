@@ -288,7 +288,8 @@ Steps:
 > [!NOTE]
 Remember to convert the .top file to a valid .itp file
 
-
+> [!IMPORTANT]
+Need to copy in Output, the files from [CGenFF](https://app.cgenff.com/login) in GROMACS (Forcefield, .pdb and .top -which should be change to an .itp format-)
 
 All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
 
