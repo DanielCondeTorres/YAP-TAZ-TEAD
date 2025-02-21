@@ -288,32 +288,6 @@ Remember to convert the .top file to a valid .itp file
  You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org).
  Use [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/) to obtain the .pdbqt file
 
-``` 
- pythonsh $PATH_TO/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py -r recptor.pdb -o receptor.pdbqt
-```     
-``` 
- pythonsh $PATH_TO/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py -l ligand.pdb -o ligand.pdbqt
-```     
-```   
-vina --config config.txt --cpu 1
-```   
-```
-grep -v BRANCH all.pdbqt | grep -v ROOT | grep -v TORSDOF > docking_results.pdb
-```
-Select best conformation (automatizar):
-
-```   
-awk '/^MODEL 1/,/^ENDMDL/' docking_results.pdb > best_conformation.pdb
-```   
- Concatenate structures with one of this options:
-
- ``` 
-pymol -c -d "load YAP.pdb, receptor; load best_conformation.pdb, ligand; create complex, receptor or ligand; save complex.pdb; quit"
-python complex_ligand_formation.py -receptor complex.pdb -ligand best_conformation.pdb
-``` 
-
-
-
 
 All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
 
@@ -327,6 +301,7 @@ Inputs:
 - **LIGAND**: PDB of you ligand (you can obtain it from [CGenFF](https://app.cgenff.com/login))
 - **PATH_TO_pythonsh**: Path to your pythonsh installation (obtained from [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/))
 - **PATH_TO**: Path to Utilities24 of [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/), it should be something like ../MGLToolsPckgs/AutoDockTools/Utilities24
+
 Output:
 - **complex_ligand.pdb**: PDB with the protein complex and the ligand after the Docking.
 
