@@ -117,10 +117,19 @@ The program is written in Python language so Python version 3 or higher is requi
 - [MDAnalysis](https://www.mdanalysis.org)
 - [Mdtraj](https://www.mdtraj.org/1.9.8.dev0/index.html)
 - [Numpy](https://numpy.org)
+- [Avogadro](https://sourceforge.net/projects/avogadro/files/latest/download)
+- [CGenFF](https://app.cgenff.com/login) or [acpype](https://github.com/alanwilter/acpype) 
+- [Autodock Vina](https://vina.scripps.edu/downloads/)
+- [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/)
+- [VMD](https://www.ks.uiuc.edu/Research/vmd/)
 - [Re](https://docs.python.org/3/library/re.html)
 - [Os](https://docs.python.org/3/library/os.html)
 - [Glob](https://docs.python.org/3/library/glob.html)
 - [Fileinput](https://docs.python.org/es/3/library/fileinput.html)
+
+### Doing the docking (provisional).
+ You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org).
+ Use [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/) to obtain the .pdbqt file
 
 
 To be able to use these libraries, it is recommended to work with anaconda environment.
@@ -284,9 +293,7 @@ Steps:
 - Obtain the topolgy from [CGenFF](https://app.cgenff.com/login) or [acpype](https://github.com/alanwilter/acpype) 
 > [!NOTE]
 Remember to convert the .top file to a valid .itp file
-### Doing the docking.
- You can use [Autodock Vina](https://vina.scripps.edu/downloads/) or [AutoDock](https://autodock.scripps.edu) and follow the [tutorial](https://autodock-vina.readthedocs.io/en/latest/docking_basic.html), also install [meeko](https://meeko.readthedocs.io/en/release-doc/installation.html) and [rdkit](https://www.rdkit.org).
- Use [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/) to obtain the .pdbqt file
+
 
 
 All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
