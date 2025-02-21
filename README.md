@@ -159,7 +159,7 @@ Clone this repository. For example,
 git clone https://github.com/DanielCondeTorres/YAP-TAZ-TEAD.git
 ```
 - Forcefield: **charmm 36**
-- Docking software: **  **
+- Docking software: **Autodock Vina**
 - Input files:
     * YAP–TEAD1 complex (PDB: [3KYS](https://www.rcsb.org/structure/3KYS))
     * mYAP-TEAD4 (PDB: [3JUA](https://www.rcsb.org/structure/3JUA))
@@ -189,18 +189,24 @@ In this directory, you will find different folders, such as:
   - **YAP_TAZ_TEAD_UNITS**: Contains individual `.pdb` files obtained from **YAP/TAZ** from AlphaFold  and **TEAD** from `3JUA.pdb`, allowing you to create your own free simulations.  
     - These can be aligned with **PyMOL** to a reference structure. 
       -**HUMAN_SEQUENCE_FROM_ALPHA_FOLD:** Contains human YAP/TAZ PDBs predicted by AlphaFold (sequence from [Li, Ze, et al. "Structural insights into the YAP and TEAD complex." Genes & development 24.3 (2010): 235-240.](https://genesdev.cshlp.org/content/24/3/235.short)).  
-
+- **MDP**: Includes .mdp files to run the simulations.
+- **LIGANDS**: Includes several *.pdb* and *.top* files that can be used in GROMACS (obtained from [CGenFF](https://app.cgenff.com/login))
+  - **For_TEAD**: Ligands that are reported that interacts with TEAD
+  - **For_YAP_TAZ**:  Ligands that are reported that interacts with YAP/TAZ
 
 <!-- Usage -->
 ## Usage ⚙️
 In order to run this program, the following command has to be used in the **Working_Area**:
+
+### Only Protein-Complex Simulation.
 ```
-make execute pdb_complex_1=../Input_files/COMPLEXS/file.pdb 
+make execute_complex_simultation pdb_complex_1=../Input_files/COMPLEXS/file.pdb 
 ```
 For two units
 ```
  make execute_complex_simultation pdb_complex_1=file.pdb pdb_complex_2=file_2.pdb
 ```
+
 This files can be filtered to select specific chains:
 
 ```
@@ -212,8 +218,9 @@ For example in the case of TAZ-TEAD complex we use:
 python obtain_specific_chains.py -pdb ../Input_files/COMPLEXS/FORMED_FROM_PDB/5gn0.pdb -c B G -o TAZ_TEAD_2_SUBUNITS_COMPLEX.pdb
 ```
 
+### Some Useful scripts:
 
-### PyMOL to template
+#### PyMOL to template
 
 In [PyMOL](https://pymol.org) terminal.
 
@@ -260,14 +267,6 @@ In one line:
 ```
 pymol -cq -d "load archivo.pdb; align cadena_A, plantilla; align cadena_B, plantilla; save cadenas_alineadas.pdb"
 ```
-
-### In the main.py file, in the inputs section we can choose:
-o	File preparation for protein-ligand simulations.
-
-
-
-
-
 #### .cif to .pdb    
 From AlphaFold a .cif file will be obtained, this can be easy converted to a .pdb file with:
 
@@ -279,11 +278,6 @@ or
  python cif_to_pdb_converter.py -cif input_file.cif -o output_file.pdb
  ```
 
-
-        
-
-
-Therefore, in the first case the importance of the interface will be ``` cls._instance._weight_interface * -1 ``` and in the second case ``` cls._instance._weight_interface * 1 ```.
 
 ### Obtain the ligand topology
 Steps:
