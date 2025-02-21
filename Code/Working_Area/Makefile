@@ -50,8 +50,10 @@ execute_complex_ligand_formation:
 		bash Script_for_ligand_protein_formation/run_docking.sh $(LIGAND) $(PDB_INPUT)
 		cp complex_ligand.pdb ../Output/
 		cp posre.itp ../Output/
+
 # Rule usage:  make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
 execute_complex_ligand_simulation:
+	python Script_for_ligand_simulation/mod_topology_for_ligand.py -top $(TOPOLOGY) -o $(OUTPUT_TOPOLOGY_PATH)
 	bash main_ligand.sh $(PDB_INPUT_COMPLEX_LIGAND)
 
 # Help rule
