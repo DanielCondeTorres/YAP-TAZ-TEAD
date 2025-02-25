@@ -58,13 +58,14 @@ execute_complex_ligand_formation:
 
 
 
-#Rule usage: make execute_complex_ligand_simulation TOPOLOGY=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/topol.top OUTPUT_DIR=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/ LIGAND_ITP=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/ligand.itp   PDB_INPUT_COMPLEX_LIGAND=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/complex_ligand.pdb FF=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/charmm36.ff
+#Rule usage: make execute_complex_ligand_simulation TOPOLOGY=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/topol.top OUTPUT_DIR=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/ LIGAND_TOP=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/verteporfin_gmx.top    PDB_INPUT_COMPLEX_LIGAND=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/complex_ligand.pdb FF=../Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/charmm36.ff
 execute_complex_ligand_simulation:
-	python Script_for_ligand_simulation/mod_topology_for_ligand.py -top $(TOPOLOGY) -o topol_mod.top
+	python Script_for_ligand_simulation/mod_topology_for_ligand.py -top $(TOPOLOGY) -o topol_mod.top -ligand_topology $(LIGAND_TOP)
 	python  Script_for_ligand_simulation/mod_topology_for_ligand_2.py -top topol_mod.top -o topol_mod2.top
 	cp topol_mod2.top $(OUTPUT_DIR)
 	cp -r  $(FF) $(OUTPUT_DIR) 
-	cp $(LIGAND_ITP) $(OUTPUT_DIR)/ligand.itp
+	python Script_for_ligand_simulation/topol_to_itp.py -top $(LIGAND_TOP)
+	cp ligand.itp $(OUTPUT_DIR)
 	bash Script_for_ligand_simulation/main_ligand.sh $(PDB_INPUT_COMPLEX_LIGAND) $(OUTPUT_DIR)
 
 # Help rule

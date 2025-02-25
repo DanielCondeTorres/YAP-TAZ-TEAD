@@ -310,7 +310,7 @@ Output:
 The next step is to run an [FEP simulation](https://tutorials.gromacs.org/docs/free-energy-of-solvation.html) in [Gromacs](https://gromacs.bioexcel.eu). This simulation is performed to allow the ligand to gradually incorporate into the protein complex rather than doing so abruptly 
 
 ```
-make execute_complex_ligand_simulation PDB_INPUT_COMPLEX_LIGAND=../Output/complex_ligand.pdb
+make  make execute_complex_ligand_simulation TOPOLOGY=previous_complex_simulation_top/topol.top OUTPUT_DIR=Output_dir_path LIGAND_TOP=path_to_ligand_top/verteporfin_gmx.top    PDB_INPUT_COMPLEX_LIGAND= path_to_complex_ligand.pdb/complex_ligand.pdb FF=path_to_ligand_ff_generated/verteporfin_gromacs/charmm36.ff
 ```
 OJO MODIFICAR EL TOPOL.TOP!!!!!!! puede ser modificando el charmm36 bonded y añadirlo en el mod_topol.py primero :) vamosss
 Inputs:
