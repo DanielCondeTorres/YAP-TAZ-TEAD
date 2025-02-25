@@ -293,6 +293,8 @@ Need to copy in Output, the files from [CGenFF](https://app.cgenff.com/login) in
 
 All the steps together with [Autodock Vina](https://vina.scripps.edu/downloads/) and [MGLTools](https://ccsb.scripps.edu/mgltools/downloads/):
 
+**Form out.pdb** from the last frame of your traj
+
 ```
 make execute_complex_ligand_formation PATH_TO=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/MGLToolsPckgs/AutoDockTools/Utilities24 PATH_TO_pythonsh=/Users/danielcondetorres/Applications/mgltools_1.5.7_MacOS-X/bin/pythonsh PDB_INPUT=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/out.pdb  RECEPTOR_CHAIN=A LIGAND=../../../YAP-TAZ-TEAD/Code/Input_files/LIGANDS/For_YAP_TAZ/verteporfin_gromacs/verteporfin_gmx22.pdb OUTPUT_DIR=../HUMAN_3KYS/YAP_TEAD_YAP_FROM_ALPHA_FOLD/
 ```
