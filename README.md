@@ -370,7 +370,7 @@ Additional information about this modifications can be found in our [Wiki](https
 
 <!-- DISTRIBUTION OF TASKS -->
 ## Distribution of tasks ✒️ 
-Project coordinator: Ándres Gómez, Ángel Piñeiro and Rebeca García-Fandino
+Project coordinator: Hugo A. L. Filipe, Ángel Piñeiro and Rebeca García-Fandino
 
 - Main program (Python program): Daniel Conde-Torres,Alejandro Seco, Hugo A. L. Filipe,  Ángel Piñeiro and Rebeca García-Fandino
 - GitHub Designer: Daniel Conde-Torres
