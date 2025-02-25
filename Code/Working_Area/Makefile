@@ -45,7 +45,7 @@ execute_complex_ligand_formation:
 	python Script_for_ligand_protein_formation/generate_vina_config.py -r receptor.pdbqt -l ligand.pdbqt -p $(PDB_INPUT) -o config.txt
 	vina --config config.txt --cpu 1 --num_modes 15 > log.txt
 	python Script_for_ligand_protein_formation/obtain_best_affinity.py -log log.txt
-	cp log.txt ../Output/
+	cp log.txt $(OUTPUT_DIR)
 # Extract the best conformation
 #run_docking.sh
 	bash Script_for_ligand_protein_formation/run_docking.sh $(LIGAND) $(PDB_INPUT)
