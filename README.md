@@ -1,5 +1,5 @@
 # YAP/TAZ-TEAD
-
+This repository provides code that utilizes GROMACS to prepare simulations of protein-protein complexes in a water box. Additionally, it allows for docking of ligands to these proteins and prepares structures that can be simulated using molecular dynamics (MD).
 
 ## Expected outcomes
 
